@@ -27,3 +27,7 @@ run:
 		up \
 		--remove-orphans \
 		--force-recreate
+
+travis-deploy:
+	docker push howtoadhd/howtoadhd:php
+	docker push howtoadhd/howtoadhd:nginx
