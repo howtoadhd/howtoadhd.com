@@ -5,6 +5,9 @@
 /app/vendor/
 /app/wordpress/
 
+/app/wp-content/upgrade/
+/app/wp-content/uploads/
+
 /app/wp-content/mu-plugins/ludicrousdb/
 /app/wp-content/mu-plugins/batcache/
 /app/wp-content/mu-plugins/memcached-object-cache/
