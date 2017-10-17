@@ -3,6 +3,8 @@ FROM howtoadhd/howtoadhd:app
 
 FROM loreleiaurora/php-base:fpm
 
+WORKDIR /var/www
+
 COPY --from=0 /var/www /var/www
 
 COPY ./start-container.sh /start-container

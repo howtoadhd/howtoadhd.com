@@ -14,7 +14,7 @@ build:
 
 run:
 	cd app; \
-    composer install \
+    ../bin/composer install \
 		--no-ansi \
 		--dev \
 		--no-interaction \
