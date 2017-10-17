@@ -19,7 +19,7 @@ services:
     restart: always
 
   php:
-    image: howtoadhd/howtoadhd:php
+    image: howtoadhd/howtoadhd.com:php
     restart: always
     depends_on:
       - db
@@ -49,7 +49,7 @@ services:
       WP_DEBUG: "true"
 
   nginx:
-    image: howtoadhd/howtoadhd:nginx
+    image: howtoadhd/howtoadhd.com:nginx
     restart: always
     depends_on:
       - php

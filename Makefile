@@ -8,9 +8,9 @@ pull:
 	docker pull nginx:mainline-alpine
 
 build:
-	docker build --no-cache -t howtoadhd/howtoadhd:app app
-	docker build --no-cache -t howtoadhd/howtoadhd:php php
-	docker build --no-cache -t howtoadhd/howtoadhd:nginx nginx
+	docker build --no-cache -t howtoadhd/howtoadhd.com:app app
+	docker build --no-cache -t howtoadhd/howtoadhd.com:php php
+	docker build --no-cache -t howtoadhd/howtoadhd.com:nginx nginx
 
 run:
 	cd app; \
@@ -29,5 +29,5 @@ run:
 		--force-recreate
 
 travis-deploy:
-	docker push howtoadhd/howtoadhd:php
-	docker push howtoadhd/howtoadhd:nginx
+	docker push howtoadhd/howtoadhd.com:php
+	docker push howtoadhd/howtoadhd.com:nginx

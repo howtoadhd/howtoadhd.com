@@ -1,4 +1,4 @@
-FROM howtoadhd/howtoadhd:app
+FROM howtoadhd/howtoadhd.com:app
 # This exists to allow copying between images
 
 FROM loreleiaurora/php-base:fpm
