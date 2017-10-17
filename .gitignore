@@ -4,12 +4,12 @@
 /.dev/data/
 /app/vendor/
 /app/wordpress/
-/app/wp-content/*
 
-!/app/wp-content/db.php
-!/app/wp-content/maintenance.php
-!/app/wp-content/db-error.php
-!/app/wp-content/advanced-cache.php
-!/app/wp-content/object-cache.php
-!/app/wp-content/db-config.php
-!/app/wp-content/mu-plugins/query-monitor-patch/
+/app/wp-content/mu-plugins/ludicrousdb/
+/app/wp-content/mu-plugins/batcache/
+/app/wp-content/mu-plugins/memcached-object-cache/
+
+/app/wp-content/plugins/query-monitor/
+/app/wp-content/plugins/rewrite-rules-inspector/
+
+/app/wp-content/themes/twentyseventeen/
