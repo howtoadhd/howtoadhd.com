@@ -1,0 +1,10 @@
+FROM howtoadhd/howtoadhd:app
+# This exists to allow copying between images
+
+FROM loreleiaurora/php-base:fpm
+
+COPY --from=0 /var/www /var/www
+
+COPY ./start-container.sh /start-container
+
+CMD ["/start-container"]

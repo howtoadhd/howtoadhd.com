@@ -1,0 +1,52 @@
+{
+  "name": "howtoadhd/howtoadhd",
+  "type": "project",
+  "private": true,
+  "license": "GPLv2+",
+  "authors": [
+    {
+      "name": "The How To ADHD dev team",
+      "homepage": "http://howtoadhd.com/"
+    }
+  ],
+  "config": {
+    "optimize-autoloader": true,
+    "preferred-install": "dist",
+    "sort-packages": true
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://wpackagist.org"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/humanmade/batcache"
+    },
+    {
+      "type": "package",
+      "package": {
+        "name": "humanmade/memcached-object-cache",
+        "type": "wordpress-muplugin",
+        "version": "master",
+        "dist": {
+          "url": "https://github.com/humanmade/wordpress-pecl-memcached-object-cache/archive/master.zip",
+          "type": "zip"
+        }
+      }
+    }
+  ],
+  "require": {
+    "humanmade/batcache": "dev-master",
+    "humanmade/memcached-object-cache": "dev-master",
+    "johnpbloch/wordpress": "^4.8",
+    "stuttter/ludicrousdb": "^4.0",
+    "wpackagist-theme/twentyseventeen": "*"
+  },
+  "require-dev": {
+    "johnbillion/query-monitor": "^2.15",
+    "wpackagist-plugin/rewrite-rules-inspector": "^1.2"
+  }
+}
