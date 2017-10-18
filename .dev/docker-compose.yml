@@ -17,6 +17,14 @@ services:
     volumes:
       - ./data/mail:/sesmock_root
 
+  phpmemcacheadmin:
+    image: hitwe/phpmemcachedadmin
+    restart: always
+    depends_on:
+      - memcached
+    ports:
+     - 11212:80
+
   db:
     image: mariadb:latest
     restart: always
@@ -30,16 +38,18 @@ services:
       MYSQL_USER: wordpress
       MYSQL_PASSWORD: wordpress
 
-  cache:
+  memcached:
     image: memcached:latest
     restart: always
+    ports:
+      - 11211:11211
 
   queue:
     image: howtoadhd/howtoadhd.com:queue
     restart: always
     depends_on:
       - db
-      - cache
+      - memcached
     volumes:
       - ../app:/var/www
     extra_hosts:
@@ -49,7 +59,7 @@ services:
       MYSQL_DATABASE: wordpress
       MYSQL_USER: wordpress
       MYSQL_PASSWORD: wordpress
-      CACHE_HOST: cache
+      CACHE_HOST: memcached
       CACHE_PORT: 11211
       AUTH_KEY: "B9MDMW+.;9&K>%Lz^_|7a1E;S3.EFT5D&X4{<tqD[3?`O!e3s-( f.MCx3~I&4(#"
       SECURE_AUTH_KEY: "i9%FOl/KJ6%h+qk(D .M@GcWA+:F&!(%Rknx?mBG^yC+6+{bl8_=+ 1W/m^-E0SG"
@@ -76,7 +86,7 @@ services:
     restart: always
     depends_on:
       - db
-      - cache
+      - memcached
     volumes:
       - ../app:/var/www
     extra_hosts:
@@ -86,7 +96,7 @@ services:
       MYSQL_DATABASE: wordpress
       MYSQL_USER: wordpress
       MYSQL_PASSWORD: wordpress
-      CACHE_HOST: cache
+      CACHE_HOST: memcached
       CACHE_PORT: 11211
       DOMAIN: howtoadhd.test
       INITIAL_USER: admin
