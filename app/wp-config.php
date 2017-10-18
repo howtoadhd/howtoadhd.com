@@ -92,6 +92,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
+ * Dont concat scripts
+ */
+const CONCATENATE_SCRIPTS=false;
+
  * It's time to begin - now count it in 5-6-7-8
  */
 require_once __DIR__ . '/vendor/autoload.php';
