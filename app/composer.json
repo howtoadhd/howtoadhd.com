@@ -48,9 +48,22 @@
           "type": "zip"
         }
       }
+    },
+    {
+      "type": "package",
+      "package": {
+        "name": "humanmade/aws-ses-wp-mail",
+        "type": "wordpress-muplugin",
+        "version": "master",
+        "dist": {
+          "url": "https://github.com/humanmade/aws-ses-wp-mail/archive/571d1e03006354eac2bd5e73816466905857db96.zip",
+          "type": "zip"
+        }
+      }
     }
   ],
   "require": {
+    "humanmade/aws-ses-wp-mail": "master",
     "humanmade/batcache": "dev-master",
     "humanmade/cavalcade": "dev-master",
     "humanmade/memcached-object-cache": "dev-master",

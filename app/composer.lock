@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "d3eff1525bb9facd4e07198a63e8a94c",
+    "content-hash": "032b5836990123a0e83a3abc33af06dd",
     "packages": [
         {
             "name": "composer/installers",
@@ -122,6 +122,17 @@
                 "zikula"
             ],
             "time": "2017-08-09T07:53:48+00:00"
+        },
+        {
+            "name": "humanmade/aws-ses-wp-mail",
+            "version": "master",
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/humanmade/aws-ses-wp-mail/archive/571d1e03006354eac2bd5e73816466905857db96.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "type": "wordpress-muplugin"
         },
         {
             "name": "humanmade/batcache",

@@ -9,6 +9,14 @@ services:
     volumes:
       - ./data/uploads:/fakes3_root
 
+  fake-ses:
+    build: ./ses-mock
+    restart: always
+    ports:
+      - 4568:4568
+    volumes:
+      - ./data/mail:/sesmock_root
+
   db:
     image: mariadb:latest
     restart: always
@@ -58,6 +66,10 @@ services:
       S3_UPLOADS_KEY: mock
       S3_UPLOADS_SECRET: mock
       S3_UPLOADS_REGION: mock
+      AWS_SES_WP_MAIL_ENDPOINT: http://howtoadhd.test:4568
+      AWS_SES_WP_MAIL_REGION: mock
+      AWS_SES_WP_MAIL_KEY: mock
+      AWS_SES_WP_MAIL_SECRET: mock
 
   php:
     image: howtoadhd/howtoadhd.com:php
@@ -94,6 +106,10 @@ services:
       S3_UPLOADS_KEY: mock
       S3_UPLOADS_SECRET: mock
       S3_UPLOADS_REGION: mock
+      AWS_SES_WP_MAIL_ENDPOINT: http://howtoadhd.test:4568
+      AWS_SES_WP_MAIL_REGION: mock
+      AWS_SES_WP_MAIL_KEY: mock
+      AWS_SES_WP_MAIL_SECRET: mock
 
   nginx:
     image: howtoadhd/howtoadhd.com:nginx

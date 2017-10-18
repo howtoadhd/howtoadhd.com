@@ -110,9 +110,21 @@ if ( $s3_endpoint = getenv( 'S3_ENDPOINT' ) ) {
 unset( $s3_uploads_bucket_url, $s3_endpoint );
 
 /**
+ * SES WP Main
+ */
+define( 'AWS_SES_WP_MAIL_KEY', getenv( 'AWS_SES_WP_MAIL_KEY' ) );
+define( 'AWS_SES_WP_MAIL_SECRET', getenv( 'AWS_SES_WP_MAIL_SECRET' ) );
+define( 'AWS_SES_WP_MAIL_REGION', getenv( 'AWS_SES_WP_MAIL_REGION' ) );
+
+if ( $ses_endpoint = getenv( 'AWS_SES_WP_MAIL_ENDPOINT' ) ) {
+	define( 'AWS_SES_WP_MAIL_ENDPOINT', $ses_endpoint );
+}
+unset( $ses_endpoint );
+
+/**
  * Dont concat scripts
  */
-const CONCATENATE_SCRIPTS=false;
+const CONCATENATE_SCRIPTS = false;
 
 /**
  * It's time to begin - now count it in 5-6-7-8
