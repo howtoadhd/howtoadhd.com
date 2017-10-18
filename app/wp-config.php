@@ -82,6 +82,11 @@ if ( $env = getenv( 'WP_DEBUG' ) ) {
 	define( 'WP_DEBUG', false );
 }
 
+/**
+ * Disable wp-cron
+ */
+define( 'DISABLE_WP_CRON', true );
+
 if ( ! defined( 'ABSPATH' ) ) {
 	define( 'ABSPATH', __DIR__ . '/wordpress/' );
 }

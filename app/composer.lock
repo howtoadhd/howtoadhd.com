@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "174e09b65364b7b8badbf5a7f5bd4727",
+    "content-hash": "414fcdbbcc89613b24693dbe0a58d2c0",
     "packages": [
         {
             "name": "composer/installers",
@@ -151,6 +151,41 @@
                 "source": "https://github.com/humanmade/batcache"
             },
             "time": "2017-01-24T13:02:06+00:00"
+        },
+        {
+            "name": "humanmade/cavalcade",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/humanmade/Cavalcade.git",
+                "reference": "86320f1d2c6b8aa94c7f72db29e7c1c56f7633e3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/humanmade/Cavalcade/zipball/86320f1d2c6b8aa94c7f72db29e7c1c56f7633e3",
+                "reference": "86320f1d2c6b8aa94c7f72db29e7c1c56f7633e3",
+                "shasum": ""
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "require-dev": {
+                "humanmade/coding-standards": "dev-master"
+            },
+            "type": "wordpress-muplugin",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Human Made",
+                    "homepage": "https://hmn.md/"
+                }
+            ],
+            "description": "A better wp-cron. Horizontally scalable, works perfectly with multisite.",
+            "homepage": "https://github.com/humanmade/Cavalcade",
+            "time": "2017-07-29T11:28:01+00:00"
         },
         {
             "name": "humanmade/memcached-object-cache",
@@ -410,6 +445,7 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "humanmade/batcache": 20,
+        "humanmade/cavalcade": 20,
         "humanmade/memcached-object-cache": 20
     },
     "prefer-stable": true,

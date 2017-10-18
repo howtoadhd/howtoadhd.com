@@ -40,6 +40,7 @@
   ],
   "require": {
     "humanmade/batcache": "dev-master",
+    "humanmade/cavalcade": "dev-master",
     "humanmade/memcached-object-cache": "dev-master",
     "johnpbloch/wordpress": "^4.8",
     "stuttter/ludicrousdb": "^4.0",

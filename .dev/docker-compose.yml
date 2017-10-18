@@ -18,6 +18,33 @@ services:
     image: memcached:latest
     restart: always
 
+  queue:
+    image: howtoadhd/howtoadhd.com:queue
+    restart: always
+    depends_on:
+      - db
+      - cache
+    volumes:
+      - ../app:/var/www
+    extra_hosts:
+      - howtoadhd.test:172.18.0.1
+    environment:
+      MYSQL_HOST: db:3306
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress
+      CACHE_HOST: cache
+      CACHE_PORT: 11211
+      AUTH_KEY: "B9MDMW+.;9&K>%Lz^_|7a1E;S3.EFT5D&X4{<tqD[3?`O!e3s-( f.MCx3~I&4(#"
+      SECURE_AUTH_KEY: "i9%FOl/KJ6%h+qk(D .M@GcWA+:F&!(%Rknx?mBG^yC+6+{bl8_=+ 1W/m^-E0SG"
+      LOGGED_IN_KEY: "(AHj/aCW-GC>IL4ea7|ep1Lv6tpCMD~W:aQW,q.X3N &-,U%w+0W2vJ-/GA6&mZm"
+      NONCE_KEY: "]VIj|#3Q#2f[?DiYoaBRmaZV9+(=+LD<+rNvk!AjzodroxDX};Tx/MWTIj9:#gX_"
+      AUTH_SALT: "i6/g2lij:kT}`cU^S&SShz2(^_(*O4ECr5c/-_gSMn*!4Y`ovOCqp*nC4VYYxMeH"
+      SECURE_AUTH_SALT: "lO^N@qvB{mYsq2XAU.qM<DOuk0(VvuBLP>FR50-Xy:Z=ny!/vC/<XT|NT|+[E%U "
+      LOGGED_IN_SALT: "-[?v6J-}4 )GnoS54e:I;C|z]75X-7frW+.k?Vf1o[IIFHF[GF((+I|uh[+|mEb/"
+      NONCE_SALT: "]=C%H0+ ldhdsIJv2~>CXn s%oRy22GAFFt-OT0<*.n/pL?B-zTA`S-{VSQ5HGS5"
+      WP_DEBUG: "false"
+
   php:
     image: howtoadhd/howtoadhd.com:php
     restart: always
@@ -46,7 +73,7 @@ services:
       SECURE_AUTH_SALT: "lO^N@qvB{mYsq2XAU.qM<DOuk0(VvuBLP>FR50-Xy:Z=ny!/vC/<XT|NT|+[E%U "
       LOGGED_IN_SALT: "-[?v6J-}4 )GnoS54e:I;C|z]75X-7frW+.k?Vf1o[IIFHF[GF((+I|uh[+|mEb/"
       NONCE_SALT: "]=C%H0+ ldhdsIJv2~>CXn s%oRy22GAFFt-OT0<*.n/pL?B-zTA`S-{VSQ5HGS5"
-      WP_DEBUG: "true"
+      WP_DEBUG: "false"
 
   nginx:
     image: howtoadhd/howtoadhd.com:nginx

@@ -11,6 +11,7 @@ build:
 	docker build --no-cache -t howtoadhd/howtoadhd.com:app app
 	docker build --no-cache -t howtoadhd/howtoadhd.com:php php
 	docker build --no-cache -t howtoadhd/howtoadhd.com:nginx nginx
+	docker build --no-cache -t howtoadhd/howtoadhd.com:queue queue
 
 run:
 	cd app; \
@@ -31,3 +32,4 @@ run:
 travis-deploy:
 	docker push howtoadhd/howtoadhd.com:php
 	docker push howtoadhd/howtoadhd.com:nginx
+	docker push howtoadhd/howtoadhd.com:queue
