@@ -11,6 +11,7 @@ if ( defined( 'WP_INSTALLING' ) && WP_INSTALLING ) {
 }
 
 $mu_plugins = array(
+	"s3-uploads/s3-uploads.php",
 );
 
 foreach ( $mu_plugins as $file ) {

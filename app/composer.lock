@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "414fcdbbcc89613b24693dbe0a58d2c0",
+    "content-hash": "d3eff1525bb9facd4e07198a63e8a94c",
     "packages": [
         {
             "name": "composer/installers",
@@ -197,6 +197,34 @@
                 "shasum": null
             },
             "type": "wordpress-muplugin"
+        },
+        {
+            "name": "humanmade/s3-uploads",
+            "version": "dev-master",
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/humanmade/S3-Uploads/archive/411697780aaef386cd6e8476731b10749b71796a.zip",
+                "reference": "411697780aaef386cd6e8476731b10749b71796a",
+                "shasum": ""
+            },
+            "type": "wordpress-plugin",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Human Made Limited",
+                    "email": "support@humanmade.co.uk",
+                    "homepage": "http://hmn.md/"
+                }
+            ],
+            "description": "WordPress plugin to store uploads on S3",
+            "homepage": "https://github.com/humanmade/S3-Uploads",
+            "keywords": [
+                "wordpress"
+            ],
+            "time": "2017-08-24T14:47:07+00:00"
         },
         {
             "name": "johnpbloch/wordpress",
@@ -446,7 +474,8 @@
     "stability-flags": {
         "humanmade/batcache": 20,
         "humanmade/cavalcade": 20,
-        "humanmade/memcached-object-cache": 20
+        "humanmade/memcached-object-cache": 20,
+        "humanmade/s3-uploads": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,

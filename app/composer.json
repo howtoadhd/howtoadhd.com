@@ -36,12 +36,25 @@
           "type": "zip"
         }
       }
+    },
+    {
+      "type": "package",
+      "package": {
+        "name": "humanmade/s3-uploads",
+        "type": "wordpress-muplugin",
+        "version": "master",
+        "dist": {
+          "url": "https://github.com/humanmade/S3-Uploads/archive/411697780aaef386cd6e8476731b10749b71796a.zip",
+          "type": "zip"
+        }
+      }
     }
   ],
   "require": {
     "humanmade/batcache": "dev-master",
     "humanmade/cavalcade": "dev-master",
     "humanmade/memcached-object-cache": "dev-master",
+    "humanmade/s3-uploads": "dev-master",
     "johnpbloch/wordpress": "^4.8",
     "stuttter/ludicrousdb": "^4.0",
     "wpackagist-theme/twentyseventeen": "*"
@@ -49,5 +62,10 @@
   "require-dev": {
     "johnbillion/query-monitor": "^2.15",
     "wpackagist-plugin/rewrite-rules-inspector": "^1.2"
+  },
+  "extra": {
+    "installer-paths": {
+      "wp-content/mu-plugins/s3-uploads/": ["humanmade/s3-uploads"]
+    }
   }
 }

@@ -81,6 +81,7 @@ if ( $env = getenv( 'WP_DEBUG' ) ) {
 } else {
 	define( 'WP_DEBUG', false );
 }
+unset( $env );
 
 /**
  * Disable wp-cron
@@ -92,10 +93,28 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
+ * S3 Uploads / Tachyon image server
+ */
+define( 'S3_UPLOADS_BUCKET', getenv( 'S3_UPLOADS_BUCKET' ) );
+define( 'S3_UPLOADS_KEY', getenv( 'S3_UPLOADS_KEY' ) );
+define( 'S3_UPLOADS_SECRET', getenv( 'S3_UPLOADS_SECRET' ) );
+define( 'S3_UPLOADS_REGION', getenv( 'S3_UPLOADS_REGION' ) );
+
+if ( $s3_uploads_bucket_url = getenv( 'S3_UPLOADS_BUCKET_URL' ) ) {
+	define( 'S3_UPLOADS_BUCKET_URL', $s3_uploads_bucket_url );
+}
+
+if ( $s3_endpoint = getenv( 'S3_ENDPOINT' ) ) {
+	define( 'S3_ENDPOINT', $s3_endpoint );
+}
+unset( $s3_uploads_bucket_url, $s3_endpoint );
+
+/**
  * Dont concat scripts
  */
 const CONCATENATE_SCRIPTS=false;
 
+/**
  * It's time to begin - now count it in 5-6-7-8
  */
 require_once __DIR__ . '/vendor/autoload.php';

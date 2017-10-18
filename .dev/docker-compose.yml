@@ -1,6 +1,14 @@
 version: "3"
 
 services:
+  fake-s3:
+    image: lphoward/fake-s3
+    restart: always
+    ports:
+      - 4569:4569
+    volumes:
+      - ./data/uploads:/fakes3_root
+
   db:
     image: mariadb:latest
     restart: always
@@ -44,6 +52,12 @@ services:
       LOGGED_IN_SALT: "-[?v6J-}4 )GnoS54e:I;C|z]75X-7frW+.k?Vf1o[IIFHF[GF((+I|uh[+|mEb/"
       NONCE_SALT: "]=C%H0+ ldhdsIJv2~>CXn s%oRy22GAFFt-OT0<*.n/pL?B-zTA`S-{VSQ5HGS5"
       WP_DEBUG: "false"
+      S3_ENDPOINT: http://howtoadhd.test:4569
+      S3_UPLOADS_BUCKET_URL: http://howtoadhd.test:4569/mock
+      S3_UPLOADS_BUCKET: mock
+      S3_UPLOADS_KEY: mock
+      S3_UPLOADS_SECRET: mock
+      S3_UPLOADS_REGION: mock
 
   php:
     image: howtoadhd/howtoadhd.com:php
@@ -74,6 +88,12 @@ services:
       LOGGED_IN_SALT: "-[?v6J-}4 )GnoS54e:I;C|z]75X-7frW+.k?Vf1o[IIFHF[GF((+I|uh[+|mEb/"
       NONCE_SALT: "]=C%H0+ ldhdsIJv2~>CXn s%oRy22GAFFt-OT0<*.n/pL?B-zTA`S-{VSQ5HGS5"
       WP_DEBUG: "false"
+      S3_ENDPOINT: http://howtoadhd.test:4569
+      S3_UPLOADS_BUCKET_URL: http://howtoadhd.test:4569/mock
+      S3_UPLOADS_BUCKET: mock
+      S3_UPLOADS_KEY: mock
+      S3_UPLOADS_SECRET: mock
+      S3_UPLOADS_REGION: mock
 
   nginx:
     image: howtoadhd/howtoadhd.com:nginx
