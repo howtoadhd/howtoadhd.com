@@ -17,6 +17,17 @@ services:
     volumes:
       - ./data/mail:/sesmock_root
 
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    restart: always
+    depends_on:
+      - db
+    ports:
+      - 3307:80
+    environment:
+      PMA_USER: wordpress
+      PMA_PASSWORD: wordpress
+
   phpmemcacheadmin:
     image: hitwe/phpmemcachedadmin
     restart: always
