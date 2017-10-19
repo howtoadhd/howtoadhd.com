@@ -19,3 +19,7 @@ script:
       docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
       make travis-deploy;
     fi
+notifications:
+  webhooks:
+    urls:
+      secure: WlBjUX2gPLRdWadN6LhbfRiy3hsQTJIswa5aUhVUZBzKTgLjuVb7v2nz8wPMtoghKbx2EU9nXXccDIT7c9QUeZ+xIHjWfaKAYDGgx/gYoc5NpKrunoXw+cueZV5eAX4Y6DPcUgRC2RDkRAWFkDo3BsMvLeuDVWpstug4Pf7RP/2o/ZDDnK64T8N7yxZa2kfU+4NN/nOeAHqAZJYFGlhpnTr+dhUvTiLqvb+X35FajHDwlPu4I3h/acwy1qayaTeUERcx68rgfvEIBhHZIDSuIKdcAh/sMJg6IWN+5Ydhc37d5OLlwhkZ7Ex0nmI2nIYv84sWwsgl/8PBmkcT+lfnUBRejY1WXTlC1BRWEwU5994i1niYm0sfnAzJvs1gol4Mi1BL+GfKlM5Jyx2UQcGp7SAZnK4ANS2jCzAozYjoVmVPTvWyY3bEtE4gG0IwYu/LljM9L77ezZZU4+Cnni2Dn7iQq4LAMbH1Q5vF4JmRVyUOScYK+ue1NjP5tuJCl7u1Tf45wupzK3ymWGX6y3by5oPZTJ3azycIIhImoBlohnkpHuIc5pBmk6Hkxf2UyXKcY1B1IH24VYrfB6lx8Is6iTuK55BEAyv+BZ/K5HYnBQY6t+MkrDl0QV9EWYcdNgglwAN8aJyWRQHSaWkOe+ruvcBeYA9husiC/r17QqoH6Ns=
