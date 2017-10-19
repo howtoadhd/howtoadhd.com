@@ -1,6 +1,6 @@
 default: dev
 
-dev: pull build run
+dev: pull build-dev run
 
 pull:
 	docker pull loreleiaurora/php-base:cli
@@ -12,6 +12,9 @@ build:
 	docker build --no-cache -t howtoadhd/howtoadhd.com:php php
 	docker build --no-cache -t howtoadhd/howtoadhd.com:nginx nginx
 	docker build --no-cache -t howtoadhd/howtoadhd.com:queue queue
+
+build-dev: build
+	docker build --no-cache -t howtoadhd/howtoadhd.com:php-dev .dev/php-dev
 
 run:
 	cd app; \

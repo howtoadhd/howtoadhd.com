@@ -93,7 +93,7 @@ services:
       AWS_SES_WP_MAIL_SECRET: mock
 
   php:
-    image: howtoadhd/howtoadhd.com:php
+    image: howtoadhd/howtoadhd.com:php-dev
     restart: always
     depends_on:
       - db
@@ -131,6 +131,8 @@ services:
       AWS_SES_WP_MAIL_REGION: mock
       AWS_SES_WP_MAIL_KEY: mock
       AWS_SES_WP_MAIL_SECRET: mock
+      XDEBUG_CONFIG: "remote_host=192.168.0.45"
+      PHP_IDE_CONFIG: "serverName=howtoadhd"
 
   nginx:
     image: howtoadhd/howtoadhd.com:nginx
