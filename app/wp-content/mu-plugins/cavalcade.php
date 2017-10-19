@@ -8,4 +8,4 @@
  * License: GPLv2 or later
  */
 
-require_once WPMU_PLUGIN_DIR . '/cavalcade/plugin.php';
+require_once WPMU_PLUGIN_DIR . '/platform/cavalcade/plugin.php';

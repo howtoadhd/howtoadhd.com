@@ -62,6 +62,11 @@ const WP_CONTENT_DIR = __DIR__ . '/wp-content';
 define( 'WP_CONTENT_URL', WP_SITEURL . '/wp-content' );
 
 /**
+ * dropins dir
+ */
+const DROPINS_DIR = WP_CONTENT_DIR . '/dropins';
+
+/**
  * mu-plugins dir
  */
 const WPMU_PLUGIN_DIR = WP_CONTENT_DIR . '/mu-plugins';

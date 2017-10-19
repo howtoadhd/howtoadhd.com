@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "032b5836990123a0e83a3abc33af06dd",
+    "content-hash": "ac92efb31b7fe6bf91a9c8694748f800",
     "packages": [
         {
             "name": "composer/installers",
@@ -211,31 +211,14 @@
         },
         {
             "name": "humanmade/s3-uploads",
-            "version": "dev-master",
+            "version": "master",
             "dist": {
                 "type": "zip",
                 "url": "https://github.com/humanmade/S3-Uploads/archive/411697780aaef386cd6e8476731b10749b71796a.zip",
-                "reference": "411697780aaef386cd6e8476731b10749b71796a",
-                "shasum": ""
+                "reference": null,
+                "shasum": null
             },
-            "type": "wordpress-plugin",
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-2.0+"
-            ],
-            "authors": [
-                {
-                    "name": "Human Made Limited",
-                    "email": "support@humanmade.co.uk",
-                    "homepage": "http://hmn.md/"
-                }
-            ],
-            "description": "WordPress plugin to store uploads on S3",
-            "homepage": "https://github.com/humanmade/S3-Uploads",
-            "keywords": [
-                "wordpress"
-            ],
-            "time": "2017-08-24T14:47:07+00:00"
+            "type": "wordpress-muplugin"
         },
         {
             "name": "johnpbloch/wordpress",

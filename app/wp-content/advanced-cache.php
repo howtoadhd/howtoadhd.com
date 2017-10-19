@@ -1,3 +1,3 @@
 <?php
 
-require_once WPMU_PLUGIN_DIR . '/batcache/advanced-cache.php';
+require_once DROPINS_DIR . '/batcache/advanced-cache.php';

@@ -1,3 +1,3 @@
 <?php
 
-require_once WPMU_PLUGIN_DIR . '/memcached-object-cache/object-cache.php';
+require_once DROPINS_DIR . '/object-cache/object-cache.php';
