@@ -135,4 +135,5 @@ const CONCATENATE_SCRIPTS = false;
  * It's time to begin - now count it in 5-6-7-8
  */
 require_once __DIR__ . '/vendor/autoload.php';
+require_once __DIR__ . '/roles.php';
 require_once ABSPATH . 'wp-settings.php';
