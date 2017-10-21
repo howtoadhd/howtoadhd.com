@@ -13,6 +13,7 @@ if ( defined( 'WP_INSTALLING' ) && WP_INSTALLING ) {
 $mu_plugins = array(
 	"platform/s3-uploads/s3-uploads.php",
 	"platform/aws-ses-wp-mail/aws-ses-wp-mail.php",
+	"config/plugin.php",
 );
 
 foreach ( $mu_plugins as $file ) {

@@ -112,6 +112,7 @@ services:
       DOMAIN: howtoadhd.test
       INITIAL_USER: admin
       INITIAL_PASSWORD: password
+      ADMIN_EMAIL: "admin@example.com"
       AUTH_KEY: "B9MDMW+.;9&K>%Lz^_|7a1E;S3.EFT5D&X4{<tqD[3?`O!e3s-( f.MCx3~I&4(#"
       SECURE_AUTH_KEY: "i9%FOl/KJ6%h+qk(D .M@GcWA+:F&!(%Rknx?mBG^yC+6+{bl8_=+ 1W/m^-E0SG"
       LOGGED_IN_KEY: "(AHj/aCW-GC>IL4ea7|ep1Lv6tpCMD~W:aQW,q.X3N &-,U%w+0W2vJ-/GA6&mZm"

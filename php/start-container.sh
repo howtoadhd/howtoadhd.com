@@ -40,7 +40,7 @@ if ! $(wp core is-installed --allow-root); then
         --title="How To ADHD" \
         --admin_user="${INITIAL_USER}" \
         --admin_password="${INITIAL_PASSWORD}" \
-        --admin_email="admin@example.com" \
+        --admin_email="${ADMIN_EMAIL}" \
         --skip-email \
         --allow-root
 fi
