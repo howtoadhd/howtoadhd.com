@@ -10,7 +10,7 @@ services:
       - ./data/uploads:/fakes3_root
 
   fake-ses:
-    build: ./ses-mock
+    image: howtoadhd/ses-mock:latest
     restart: always
     ports:
       - 4568:4568
@@ -147,3 +147,4 @@ services:
       - 443:443
     environment:
       FASTCGI_PASS: php:9000
+
