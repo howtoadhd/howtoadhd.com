@@ -32,6 +32,13 @@ run:
 		--remove-orphans \
 		--force-recreate
 
+stop:
+	cd .dev; \
+	docker-compose \
+		--project-name howtoadhd \
+		down \
+		--remove-orphans
+
 travis-deploy:
 	docker push howtoadhd/howtoadhd.com:php
 	docker push howtoadhd/howtoadhd.com:nginx
