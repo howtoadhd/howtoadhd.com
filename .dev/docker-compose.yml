@@ -55,6 +55,14 @@ services:
     ports:
       - 11211:11211
 
+  ca:
+    image: loreleiaurora/openssl:latest
+    volumes:
+      - ./ca/maybe-gen-crt.sh:/maybe-gen-crt.sh
+      - ./ca/openssl.cnf:/openssl.cnf
+      - ./data/ca/:/ca
+    command: [ '/maybe-gen-crt.sh' ]
+
   queue:
     image: howtoadhd/howtoadhd.com:queue
     restart: always
@@ -147,4 +155,3 @@ services:
       - 443:443
     environment:
       FASTCGI_PASS: php:9000
-

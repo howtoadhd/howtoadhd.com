@@ -1,0 +1,16 @@
+[ req ]
+prompt             = no
+default_bits       = 2048
+distinguished_name = req_distinguished_name
+req_extensions     = v3_req
+
+[ req_distinguished_name ]
+CN = howtoadhd.test
+
+[ v3_req ]
+subjectAltName = @alt_names
+nsComment      = "!!! NOT FOR PRODUCTION USE !!!"
+
+[alt_names]
+DNS.1 = howtoadhd.test
+DNS.2 = *.howtoadhd.test
