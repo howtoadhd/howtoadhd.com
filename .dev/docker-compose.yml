@@ -4,16 +4,12 @@ services:
   fake-s3:
     image: lphoward/fake-s3
     restart: always
-    ports:
-      - 4569:4569
     volumes:
       - ./data/uploads:/fakes3_root
 
   fake-ses:
     image: howtoadhd/ses-mock:latest
     restart: always
-    ports:
-      - 4568:4568
     volumes:
       - ./data/mail:/sesmock_root
 
@@ -22,8 +18,6 @@ services:
     restart: always
     depends_on:
       - db
-    ports:
-      - 3307:80
     environment:
       PMA_USER: wordpress
       PMA_PASSWORD: wordpress
@@ -33,8 +27,6 @@ services:
     restart: always
     depends_on:
       - memcached
-    ports:
-     - 11212:80
 
   db:
     image: mariadb:latest
@@ -150,8 +142,26 @@ services:
       - php
     volumes:
       - ../app:/var/www
+    environment:
+      FASTCGI_PASS: php:9000
+
+  haproxy:
+    image: haproxy:latest
+    restart: always
+    depends_on:
+      - nginx
+      - ca
+      - fake-s3
+      - fake-ses
+      - phpmyadmin
+      - phpmemcacheadmin
+    volumes:
+      - ./data/ca/:/ca
+      - ./haproxy/haproxy.cfg/:/usr/local/etc/haproxy/haproxy.cfg
     ports:
       - 80:80
       - 443:443
-    environment:
-      FASTCGI_PASS: php:9000
+      - 3307:3307
+      - 4568:4568
+      - 4569:4569
+      - 11212:11212
