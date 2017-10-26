@@ -9,6 +9,8 @@ if ( defined( 'S3_ENDPOINT' ) && S3_ENDPOINT ) {
 		$params['endpoint']   = trailingslashit( S3_ENDPOINT );
 		$params['path_style'] = true;
 
+		$params['http']['verify'] = false;
+
 		return $params;
 	} );
 }

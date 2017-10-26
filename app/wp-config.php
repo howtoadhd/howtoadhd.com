@@ -5,6 +5,10 @@ if ( ! isset( $_SERVER['HTTP_HOST'] ) ) {
 	$_SERVER['HTTP_HOST'] = '';
 }
 
+if ( isset( $_SERVER['HTTP_X_FORWARDED_PROTO'] ) && strpos( $_SERVER['HTTP_X_FORWARDED_PROTO'], 'https' ) !== false ) {
+	$_SERVER['HTTPS'] = 'on';
+}
+
 /**
  * MySQL settings
  */
@@ -46,8 +50,8 @@ define( 'NONCE_SALT', getenv( 'NONCE_SALT' ) );
 /**
  * Site URL
  */
-defined( 'WP_SITEURL' ) or define( 'WP_SITEURL', 'http://' . $_SERVER['HTTP_HOST'] );
-defined( 'WP_HOME' ) or define( 'WP_HOME', 'http://' . $_SERVER['HTTP_HOST'] );
+defined( 'WP_SITEURL' ) or define( 'WP_SITEURL', 'https://' . $_SERVER['HTTP_HOST'] );
+defined( 'WP_HOME' ) or define( 'WP_HOME', 'https://' . $_SERVER['HTTP_HOST'] );
 
 /**
  * Filesystem settings

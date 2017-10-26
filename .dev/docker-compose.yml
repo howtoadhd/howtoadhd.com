@@ -81,13 +81,13 @@ services:
       LOGGED_IN_SALT: "-[?v6J-}4 )GnoS54e:I;C|z]75X-7frW+.k?Vf1o[IIFHF[GF((+I|uh[+|mEb/"
       NONCE_SALT: "]=C%H0+ ldhdsIJv2~>CXn s%oRy22GAFFt-OT0<*.n/pL?B-zTA`S-{VSQ5HGS5"
       WP_DEBUG: "false"
-      S3_ENDPOINT: http://howtoadhd.test:4569
-      S3_UPLOADS_BUCKET_URL: http://howtoadhd.test:4569/mock
+      S3_ENDPOINT: https://howtoadhd.test:4569
+      S3_UPLOADS_BUCKET_URL: https://howtoadhd.test:4569/mock
       S3_UPLOADS_BUCKET: mock
       S3_UPLOADS_KEY: mock
       S3_UPLOADS_SECRET: mock
       S3_UPLOADS_REGION: mock
-      AWS_SES_WP_MAIL_ENDPOINT: http://howtoadhd.test:4568
+      AWS_SES_WP_MAIL_ENDPOINT: https://howtoadhd.test:4568
       AWS_SES_WP_MAIL_REGION: mock
       AWS_SES_WP_MAIL_KEY: mock
       AWS_SES_WP_MAIL_SECRET: mock
@@ -109,7 +109,7 @@ services:
       MYSQL_PASSWORD: wordpress
       CACHE_HOST: memcached
       CACHE_PORT: 11211
-      DOMAIN: howtoadhd.test
+      DOMAIN: https://howtoadhd.test/
       INITIAL_USER: admin
       INITIAL_PASSWORD: password
       ADMIN_EMAIL: "admin@example.com"
@@ -122,13 +122,13 @@ services:
       LOGGED_IN_SALT: "-[?v6J-}4 )GnoS54e:I;C|z]75X-7frW+.k?Vf1o[IIFHF[GF((+I|uh[+|mEb/"
       NONCE_SALT: "]=C%H0+ ldhdsIJv2~>CXn s%oRy22GAFFt-OT0<*.n/pL?B-zTA`S-{VSQ5HGS5"
       WP_DEBUG: "false"
-      S3_ENDPOINT: http://howtoadhd.test:4569
-      S3_UPLOADS_BUCKET_URL: http://howtoadhd.test:4569/mock
+      S3_ENDPOINT: https://howtoadhd.test:4569
+      S3_UPLOADS_BUCKET_URL: https://howtoadhd.test:4569/mock
       S3_UPLOADS_BUCKET: mock
       S3_UPLOADS_KEY: mock
       S3_UPLOADS_SECRET: mock
       S3_UPLOADS_REGION: mock
-      AWS_SES_WP_MAIL_ENDPOINT: http://howtoadhd.test:4568
+      AWS_SES_WP_MAIL_ENDPOINT: https://howtoadhd.test:4568
       AWS_SES_WP_MAIL_REGION: mock
       AWS_SES_WP_MAIL_KEY: mock
       AWS_SES_WP_MAIL_SECRET: mock

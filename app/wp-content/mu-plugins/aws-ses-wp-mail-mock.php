@@ -8,6 +8,8 @@ if ( defined( 'AWS_SES_WP_MAIL_ENDPOINT' ) && AWS_SES_WP_MAIL_ENDPOINT ) {
 
 		$params['endpoint'] = untrailingslashit( AWS_SES_WP_MAIL_ENDPOINT );
 
+		$params['http']['verify'] = false;
+
 		return $params;
 	} );
 }

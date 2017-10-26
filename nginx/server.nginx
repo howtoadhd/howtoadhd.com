@@ -1,6 +1,26 @@
 server {
+    listen 80;
+    server_name "~^www\.(.*)$" ;
+    return 301 https://$1$request_uri ;
+}
+
+server {
     listen 80 default_server;
     server_name _;
+
+    set_real_ip_from 10.0.0.0/8;
+    set_real_ip_from 172.16.0.0/12;
+    set_real_ip_from 192.168.0.0/16;
+    real_ip_header X-Forwarded-For;
+
+    if ($http_x_forwarded_proto != 'https') {
+        return 301 https://$host$request_uri?;
+    }
+
+    if ($host ~* www\.(.*)) {
+        set $host_without_www $1;
+        rewrite ^(.*)$ $scheme://$host_without_www$1 permanent;
+    }
 
     root /var/www/wordpress;
 
@@ -81,9 +101,13 @@ server {
         fastcgi_param   SCRIPT_FILENAME         $document_root$fastcgi_script_name;
 
         # Use the upstream for php5-fpm that we defined in nginx.conf
-        fastcgi_pass   {{FASTCGI_PASS}};
+        fastcgi_pass   {
+        {
+            FASTCGI_PASS
+        }
+    };
 
-        # And get to serving the file!
-        fastcgi_index  index.php;
-    }
+    # And get to serving the file!
+    fastcgi_index  index.php;
+}
 }
