@@ -1,5 +1,6 @@
 *.iml
 .idea
+.phplint-cache
 
 /.dev/data/
 /app/vendor/

@@ -51,6 +51,7 @@
     }
   ],
   "require": {
+    "aws/aws-sdk-php": "3.27.*",
     "humanmade/aws-ses-wp-mail": "master",
     "humanmade/batcache": "dev-master",
     "humanmade/cavalcade": "dev-master",
@@ -58,13 +59,13 @@
     "humanmade/s3-uploads": "dev-master",
     "johnpbloch/wordpress": "4.8.*",
     "stuttter/ludicrousdb": "^4.0",
-    "wpackagist-theme/twentyseventeen": "*",
-    "aws/aws-sdk-php": "3.27.*"
+    "wpackagist-theme/twentyseventeen": "*"
   },
   "require-dev": {
     "johnbillion/query-monitor": "^2.15",
     "wpackagist-plugin/rewrite-rules-inspector": "^1.2",
-	"howtoadhd/phpcs-ruleset": "dev-master"
+	"howtoadhd/phpcs-ruleset": "dev-master",
+	"overtrue/phplint": "^0.2.4"
   },
   "extra": {
     "installer-paths": {
