@@ -8,13 +8,12 @@
 /app/wp-content/upgrade/
 /app/wp-content/uploads/
 
-/app/wp-content/dropins/ludicrousdb/
-/app/wp-content/dropins/batcache/
-/app/wp-content/dropins/object-cache/
-
-/app/wp-content/mu-plugins/platform/cavalcade/
-/app/wp-content/mu-plugins/platform/s3-uploads/
-/app/wp-content/mu-plugins/platform/aws-ses-wp-mail
+/app/wp-content/platform/aws-ses-wp-mail
+/app/wp-content/platform/batcache/
+/app/wp-content/platform/cavalcade/
+/app/wp-content/platform/ludicrousdb/
+/app/wp-content/platform/object-cache/
+/app/wp-content/platform/s3-uploads/
 
 /app/wp-content/plugins/query-monitor/
 /app/wp-content/plugins/rewrite-rules-inspector/

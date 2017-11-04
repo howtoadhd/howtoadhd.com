@@ -68,12 +68,12 @@
   },
   "extra": {
     "installer-paths": {
-      "wp-content/dropins/batcache/": ["humanmade/batcache"],
-      "wp-content/dropins/object-cache/": ["humanmade/memcached-object-cache"],
-      "wp-content/dropins/ludicrousdb/": ["stuttter/ludicrousdb"],
-      "wp-content/mu-plugins/platform/aws-ses-wp-mail/": ["humanmade/aws-ses-wp-mail"],
-      "wp-content/mu-plugins/platform/cavalcade/": ["humanmade/cavalcade"],
-      "wp-content/mu-plugins/platform/s3-uploads/": ["humanmade/s3-uploads"]
+      "wp-content/platform/batcache/": ["humanmade/batcache"],
+      "wp-content/platform/object-cache/": ["humanmade/memcached-object-cache"],
+      "wp-content/platform/ludicrousdb/": ["stuttter/ludicrousdb"],
+      "wp-content/platform/aws-ses-wp-mail/": ["humanmade/aws-ses-wp-mail"],
+      "wp-content/platform/cavalcade/": ["humanmade/cavalcade"],
+      "wp-content/platform/s3-uploads/": ["humanmade/s3-uploads"]
     }
   },
   "scripts": {

@@ -81,7 +81,8 @@ services:
       LOGGED_IN_SALT: "-[?v6J-}4 )GnoS54e:I;C|z]75X-7frW+.k?Vf1o[IIFHF[GF((+I|uh[+|mEb/"
       NONCE_SALT: "]=C%H0+ ldhdsIJv2~>CXn s%oRy22GAFFt-OT0<*.n/pL?B-zTA`S-{VSQ5HGS5"
       WP_DEBUG: "false"
-      S3_ENDPOINT: https://howtoadhd.test:4569
+      S3_UPLOADS_ENDPOINT: https://howtoadhd.test:4569
+      S3_UPLOADS_SKIP_TLS: "true"
       S3_UPLOADS_BUCKET_URL: https://howtoadhd.test:4569/mock
       S3_UPLOADS_BUCKET: mock
       S3_UPLOADS_KEY: mock
@@ -91,6 +92,7 @@ services:
       AWS_SES_WP_MAIL_REGION: mock
       AWS_SES_WP_MAIL_KEY: mock
       AWS_SES_WP_MAIL_SECRET: mock
+      AWS_SES_WP_MAIL_SKIP_TLS: "true"
 
   php:
     image: howtoadhd/howtoadhd.com:php-dev
@@ -122,7 +124,8 @@ services:
       LOGGED_IN_SALT: "-[?v6J-}4 )GnoS54e:I;C|z]75X-7frW+.k?Vf1o[IIFHF[GF((+I|uh[+|mEb/"
       NONCE_SALT: "]=C%H0+ ldhdsIJv2~>CXn s%oRy22GAFFt-OT0<*.n/pL?B-zTA`S-{VSQ5HGS5"
       WP_DEBUG: "false"
-      S3_ENDPOINT: https://howtoadhd.test:4569
+      S3_UPLOADS_ENDPOINT: https://howtoadhd.test:4569
+      S3_UPLOADS_SKIP_TLS: "true"
       S3_UPLOADS_BUCKET_URL: https://howtoadhd.test:4569/mock
       S3_UPLOADS_BUCKET: mock
       S3_UPLOADS_KEY: mock
@@ -132,6 +135,7 @@ services:
       AWS_SES_WP_MAIL_REGION: mock
       AWS_SES_WP_MAIL_KEY: mock
       AWS_SES_WP_MAIL_SECRET: mock
+      AWS_SES_WP_MAIL_SKIP_TLS: "true"
       XDEBUG_CONFIG: "remote_host=192.168.0.45"
       PHP_IDE_CONFIG: "serverName=howtoadhd"
 

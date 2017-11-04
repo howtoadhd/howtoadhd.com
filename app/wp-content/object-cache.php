@@ -1,3 +1,3 @@
 <?php
 
-require_once DROPINS_DIR . '/object-cache/object-cache.php';
+require_once PLATFORM_DIR . '/object-cache/object-cache.php';

@@ -66,9 +66,9 @@ const WP_CONTENT_DIR = __DIR__ . '/wp-content';
 define( 'WP_CONTENT_URL', WP_SITEURL . '/wp-content' );
 
 /**
- * dropins dir
+ * Set platform dir
  */
-const DROPINS_DIR = WP_CONTENT_DIR . '/dropins';
+const PLATFORM_DIR = WP_CONTENT_DIR . '/platform';
 
 /**
  * mu-plugins dir
@@ -113,10 +113,16 @@ if ( $s3_uploads_bucket_url = getenv( 'S3_UPLOADS_BUCKET_URL' ) ) {
 	define( 'S3_UPLOADS_BUCKET_URL', $s3_uploads_bucket_url );
 }
 
-if ( $s3_endpoint = getenv( 'S3_ENDPOINT' ) ) {
-	define( 'S3_ENDPOINT', $s3_endpoint );
+if ( $s3_endpoint = getenv( 'S3_UPLOADS_ENDPOINT' ) ) {
+	define( 'S3_UPLOADS_ENDPOINT', $s3_endpoint );
 }
-unset( $s3_uploads_bucket_url, $s3_endpoint );
+
+if ( $s3_skip_tls = getenv( 'S3_UPLOADS_SKIP_TLS' ) ) {
+	define( 'S3_UPLOADS_SKIP_TLS', $s3_skip_tls );
+} else {
+	define( 'S3_UPLOADS_SKIP_TLS', false );
+}
+unset( $s3_uploads_bucket_url, $s3_endpoint, $s3_skip_tls );
 
 /**
  * SES WP Main
@@ -128,7 +134,13 @@ define( 'AWS_SES_WP_MAIL_REGION', getenv( 'AWS_SES_WP_MAIL_REGION' ) );
 if ( $ses_endpoint = getenv( 'AWS_SES_WP_MAIL_ENDPOINT' ) ) {
 	define( 'AWS_SES_WP_MAIL_ENDPOINT', $ses_endpoint );
 }
-unset( $ses_endpoint );
+
+if ( $ses_skip_tls = getenv( 'AWS_SES_WP_MAIL_SKIP_TLS' ) ) {
+	define( 'AWS_SES_WP_MAIL_SKIP_TLS', $ses_skip_tls );
+} else {
+	define( 'AWS_SES_WP_MAIL_SKIP_TLS', false );
+}
+unset( $ses_endpoint, $ses_skip_tls );
 
 /**
  * Dont concat scripts
