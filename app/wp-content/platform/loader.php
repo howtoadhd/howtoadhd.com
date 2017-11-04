@@ -6,12 +6,12 @@ Description: Loads the MU plugins required by the platform
 
 namespace HowToADHD\Platform\Autoloader;
 
-$mu_plugins = array(
+$mu_plugins = [
 	's3-uploads/s3-uploads.php',
 	'aws-ses-wp-mail/aws-ses-wp-mail.php',
 	'cavalcade/plugin.php',
 	'aws-config.php',
-);
+];
 
 foreach ( $mu_plugins as $file ) {
 	require_once PLATFORM_DIR . '/' . $file;
@@ -50,7 +50,7 @@ add_action(
 		$total_this_page = $GLOBALS['totals']['mustuse'];
 
 		if ( $GLOBALS['orderby'] ) {
-			uasort( $wp_list_table->items, array( $wp_list_table, '_order_callback' ) );
+			uasort( $wp_list_table->items, [ $wp_list_table, '_order_callback' ] );
 		}
 
 		// Force showing all plugins
@@ -58,19 +58,21 @@ add_action(
 		$plugins_per_page = $total_this_page;
 
 		$wp_list_table->set_pagination_args(
-			array(
+			[
 				'total_items' => $total_this_page,
 				'per_page'    => $plugins_per_page,
-			)
+			]
 		);
 	}
 );
 
-add_filter( 'plugin_action_links', function ( $actions, $plugin_file, $plugin_data, $context ) use ( $mu_plugins ) {
+add_filter(
+	'plugin_action_links', function ( $actions, $plugin_file, $plugin_data, $context ) use ( $mu_plugins ) {
 		if ( $context !== 'mustuse' || ! in_array( $plugin_file, $mu_plugins ) ) {
 			return $actions;
 		}
 
 		$actions[] = sprintf( '<span style="color:#333">File: <code>../platform/%s</code></span>', $plugin_file );
 		return $actions;
-	}, 10, 4 );
+	}, 10, 4
+);

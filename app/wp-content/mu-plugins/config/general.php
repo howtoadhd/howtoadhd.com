@@ -16,7 +16,9 @@ $settings = [
 ];
 
 foreach ( $settings as $setting => $value ) {
-	\add_filter( "pre_option_${setting}", function () use ( $value ) {
-		return $value;
-	} );
+	\add_filter(
+		"pre_option_${setting}", function () use ( $value ) {
+			return $value;
+		}
+	);
 }

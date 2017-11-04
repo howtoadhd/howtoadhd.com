@@ -28,12 +28,12 @@ $table_prefix = 'wp_';
 const WP_CACHE = true;
 
 global $memcached_servers;
-$memcached_servers = array(
-	array(
+$memcached_servers = [
+	[
 		getenv( 'CACHE_HOST' ),
 		getenv( 'CACHE_PORT' ),
-	)
-);
+	],
+];
 
 /**
  * Authentication keys and salts
