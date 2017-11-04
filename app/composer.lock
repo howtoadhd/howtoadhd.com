@@ -801,16 +801,16 @@
     "packages-dev": [
         {
             "name": "johnbillion/query-monitor",
-            "version": "2.16.1",
+            "version": "2.16.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/johnbillion/query-monitor.git",
-                "reference": "74700bd1c0eb05cb4382e2dfaf696444124808a2"
+                "reference": "8fd45a3ef46000fdf2de9bd0edbb31766e77d342"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/johnbillion/query-monitor/zipball/74700bd1c0eb05cb4382e2dfaf696444124808a2",
-                "reference": "74700bd1c0eb05cb4382e2dfaf696444124808a2",
+                "url": "https://api.github.com/repos/johnbillion/query-monitor/zipball/8fd45a3ef46000fdf2de9bd0edbb31766e77d342",
+                "reference": "8fd45a3ef46000fdf2de9bd0edbb31766e77d342",
                 "shasum": ""
             },
             "require": {
@@ -832,7 +832,7 @@
             ],
             "description": "WordPress plugin for monitoring database queries, hooks, conditionals, HTTP requests, query vars, environment, redirects, and more.",
             "homepage": "https://github.com/johnbillion/query-monitor/",
-            "time": "2017-11-01T00:09:47+00:00"
+            "time": "2017-11-03T18:56:47+00:00"
         },
         {
             "name": "wpackagist-plugin/rewrite-rules-inspector",
