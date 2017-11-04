@@ -1,0 +1,9 @@
+#!/bin/bash
+
+pushd `dirname $0` > /dev/null
+SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
+DOCKER_COMPOSE="`dirname ${SCRIPTPATH}`/.dev/docker-compose.yml"
+popd > /dev/null
+
+
+docker-compose -f ${DOCKER_COMPOSE} --project-name howtoadhd exec php ./vendor/bin/phpcbf ./

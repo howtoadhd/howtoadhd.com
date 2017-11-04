@@ -63,7 +63,8 @@
   },
   "require-dev": {
     "johnbillion/query-monitor": "^2.15",
-    "wpackagist-plugin/rewrite-rules-inspector": "^1.2"
+    "wpackagist-plugin/rewrite-rules-inspector": "^1.2",
+	"howtoadhd/phpcs-ruleset": "dev-master"
   },
   "extra": {
     "installer-paths": {
@@ -74,5 +75,13 @@
       "wp-content/mu-plugins/platform/cavalcade/": ["humanmade/cavalcade"],
       "wp-content/mu-plugins/platform/s3-uploads/": ["humanmade/s3-uploads"]
     }
+  },
+  "scripts": {
+	"config-set": [
+	  "\"vendor/bin/phpcs\" --config-set installed_paths ../../../vendor/howtoadhd/phpcs-ruleset,../../../vendor/wp-coding-standards/wpcs,../../../vendor/wimg/php-compatibility",
+	  "\"vendor/bin/phpcs\" --config-set default_standard HowToADHD"
+	],
+	"post-install-cmd": "composer config-set",
+	"post-update-cmd": "composer config-set"
   }
 }

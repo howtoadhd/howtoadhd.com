@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<ruleset name="Custom Standard">
+
+	<!-- Include the necessary rulesets. -->
+	<config name="installed_paths" value="vendor/howtoadhd/phpcs-ruleset,vendor/wp-coding-standards/wpcs,vendor/wimg/php-compatibility" />
+	<rule ref="HowToADHD"/>
+
+	<exclude-pattern>/vendor/*</exclude-pattern>
+	<exclude-pattern>/wordpress/*</exclude-pattern>
+
+	<exclude-pattern>/wp-content/dropins/batcache/*</exclude-pattern>
+	<exclude-pattern>/wp-content/dropins/ludicrousdb/*</exclude-pattern>
+	<exclude-pattern>/wp-content/dropins/object-cache/*</exclude-pattern>
+
+	<exclude-pattern>/wp-content/mu-plugins/platform/aws-ses-wp-mail/*</exclude-pattern>
+	<exclude-pattern>/wp-content/mu-plugins/platform/cavalcade/*</exclude-pattern>
+	<exclude-pattern>/wp-content/mu-plugins/platform/s3-uploads/*</exclude-pattern>
+
+	<exclude-pattern>/wp-content/plugins/query-monitor/*</exclude-pattern>
+	<exclude-pattern>/wp-content/plugins/rewrite-rules-inspector/*</exclude-pattern>
+
+	<exclude-pattern>/wp-content/themes/twentyseventeen/*</exclude-pattern>
+</ruleset>
