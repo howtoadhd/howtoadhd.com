@@ -1,5 +1,9 @@
 sudo: required
 
+language: php
+php:
+  - '7.0'
+
 services:
   - docker
 
@@ -14,6 +18,27 @@ before_install:
 
 jobs:
   include:
+    - stage: test
+      before_script:
+        - cd app && composer install
+      script:
+        - ./app/vendor/bin/phpcs ./app/
+
+
+    - stage: test
+      before_script:
+        - cd app && composer install
+      script:
+        - cd app && ./vendor/bin/phpcs ./
+
+
+    - stage: test
+      before_script:
+        - cd app && composer install
+      script:
+        - cd app && ./vendor/bin/phplint
+
+
     - stage: deploy
       before_script:
         - make pull
