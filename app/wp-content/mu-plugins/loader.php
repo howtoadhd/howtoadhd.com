@@ -1,10 +1,14 @@
 <?php
-/*
-Plugin Name: MU Plugin Loader
-Description: Loads the MU plugins required to run the site
-*/
+/**
+ * Loads the MU plugins required to run the site and add to the admin page
+ *
+ * @package HowToADHD
+ *
+ * Plugin Name: MU Plugin Loader
+ * Description: Loads the MU plugins required to run the site
+ */
 
-namespace HowToADHD\Autoloader;
+namespace HowToADHD;
 
 if ( defined( 'WP_INSTALLING' ) && WP_INSTALLING ) {
 	return;
@@ -31,14 +35,14 @@ add_action(
 				$plugin_data['Name'] = $plugin_file;
 			}
 
-			$plugins['mustuse'][ $plugin_file ] = $plugin_data;
+			$plugins['mustuse'][ $plugin_file ] = $plugin_data; // WPCS: override ok.
 		}
 
 		// Recount totals.
-		$GLOBALS['totals']['mustuse'] = count( $plugins['mustuse'] );
+		$GLOBALS['totals']['mustuse'] = count( $plugins['mustuse'] ); // WPCS: override ok.
 
 		// Only apply the rest if we're actually looking at the page.
-		if ( $GLOBALS['status'] !== 'mustuse' ) {
+		if ( 'mustuse' !== $GLOBALS['status'] ) {
 			return;
 		}
 
@@ -55,7 +59,6 @@ add_action(
 		}
 
 		// Force showing all plugins.
-		// See https://core.trac.wordpress.org/ticket/27110.
 		$plugins_per_page = $total_this_page;
 
 		$wp_list_table->set_pagination_args(
@@ -69,7 +72,7 @@ add_action(
 
 add_filter(
 	'network_admin_plugin_action_links', function ( $actions, $plugin_file, $plugin_data, $context ) use ( $mu_plugins ) {
-		if ( $context !== 'mustuse' || ! in_array( $plugin_file, $mu_plugins ) ) {
+		if ( 'mustuse' !== $context || ! in_array( $plugin_file, $mu_plugins, true ) ) {
 			return $actions;
 		}
 

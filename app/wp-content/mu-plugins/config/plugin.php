@@ -1,4 +1,9 @@
 <?php
+/**
+ * Include settings overwrite files
+ *
+ * @package HowToADHD\Config
+ */
 
 namespace HowToADHD\Config;
 

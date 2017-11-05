@@ -1,16 +1,16 @@
 <?php
 /**
- * Include the cavalcade runner
+ * Include LudicrousDB and the Query Monitor patch
  *
- * Load LudicrousDB and patch for Query Monitor.
+ * @package   HowToADHD/DB
  *
- * @package   HowToADHD/Platform
- *
- * Description: LudicrousDB and patch for Query Monitor.
+ * Description: LudicrousDB and patch for Query Monitor
  */
 
+// Include LudicrousDB.
 require_once PLATFORM_DIR . '/ludicrousdb/ludicrousdb.php';
 
+// Include Query Monitor Patch in debug mode.
 if ( WP_DEBUG ) {
 	require_once WPMU_PLUGIN_DIR . '/query-monitor-patch/db.php';
 }

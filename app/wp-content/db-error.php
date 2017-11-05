@@ -1,13 +1,18 @@
 <?php
+/**
+ * Page to output on DB error
+ *
+ * @package   HowToADHD/DB
+ */
 
-// Exit if accessed directly
+// Exit if accessed directly.
 defined( 'ABSPATH' ) || exit;
 
-// Prevent caching
-status_header( 500 ); // Error
-nocache_headers();    // No cache
+// Prevent caching.
+status_header( 500 ); // Error.
+nocache_headers();    // No cache.
 
-// Set content type & charset to be generic & friendly
+// Set content type & charset to be generic & friendly.
 header( 'Content-Type: text/html; charset=utf-8' );
 
 /** Start Editing */
@@ -23,8 +28,5 @@ header( 'Content-Type: text/html; charset=utf-8' );
 </body>
 </html>
 <?php
-
-/** Stop Editing **/
-
-// Prevent additional output
+// Prevent additional output.
 die();

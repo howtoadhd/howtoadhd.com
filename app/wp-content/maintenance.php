@@ -1,4 +1,10 @@
 <?php
+/**
+ * Page to output during maintenance
+ *
+ * @package   HowToADHD
+ */
+
 wp_load_translations_early();
 
 $protocol = wp_get_server_protocol();

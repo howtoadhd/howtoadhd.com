@@ -1,13 +1,18 @@
 <?php
+/**
+ * Force value of settings on the writing admin page
+ *
+ * @package HowToADHD\Config
+ */
 
 namespace HowToADHD\Config;
 
-// Disable post by email
+// Disable post by email.
 \add_filter( 'enable_post_by_email_configuration', '__return_false' );
 
 $settings = [
-	'default_category'    => 1, // Uncategorized
-	'default_post_format' => 0, // Standard
+	'default_category'    => 1, // Uncategorized.
+	'default_post_format' => 0, // Standard.
 	'ping_sites'          => 'http://rpc.pingomatic.com/',
 ];
 

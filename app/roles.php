@@ -1,4 +1,9 @@
 <?php
+/**
+ * Configure user roles
+ *
+ * @package HowToADHD
+ */
 
 $wp_user_roles = [
 	'administrator' => [

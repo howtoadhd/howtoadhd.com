@@ -1,11 +1,16 @@
 <?php
+/**
+ * Configure WordPress
+ *
+ * @package HowToADHD
+ */
 
-// sane default for wp-cli etc
-if ( ! isset( $_SERVER['HTTP_HOST'] ) ) {
+// sane default for wp-cli etc.
+if ( ! isset( $_SERVER['HTTP_HOST'] ) ) { // WPCS: input var ok.
 	$_SERVER['HTTP_HOST'] = '';
 }
 
-if ( isset( $_SERVER['HTTP_X_FORWARDED_PROTO'] ) && strpos( $_SERVER['HTTP_X_FORWARDED_PROTO'], 'https' ) !== false ) {
+if ( isset( $_SERVER['HTTP_X_FORWARDED_PROTO'] ) && strpos( $_SERVER['HTTP_X_FORWARDED_PROTO'], 'https' ) !== false ) { // WPCS: input var ok, sanitization ok.
 	$_SERVER['HTTPS'] = 'on';
 }
 
@@ -50,8 +55,8 @@ define( 'NONCE_SALT', getenv( 'NONCE_SALT' ) );
 /**
  * Site URL
  */
-defined( 'WP_SITEURL' ) or define( 'WP_SITEURL', 'https://' . $_SERVER['HTTP_HOST'] );
-defined( 'WP_HOME' ) or define( 'WP_HOME', 'https://' . $_SERVER['HTTP_HOST'] );
+defined( 'WP_SITEURL' ) || define( 'WP_SITEURL', 'https://' . $_SERVER['HTTP_HOST'] ); // WPCS: input var ok, sanitization ok.
+defined( 'WP_HOME' ) || define( 'WP_HOME', 'https://' . $_SERVER['HTTP_HOST'] ); // WPCS: input var ok, sanitization ok.
 
 /**
  * Filesystem settings
@@ -60,7 +65,7 @@ const DISALLOW_FILE_EDIT = true;
 const DISALLOW_FILE_MODS = true;
 
 /**
- * wp-content dir
+ * Set wp-content dir
  */
 const WP_CONTENT_DIR = __DIR__ . '/wp-content';
 define( 'WP_CONTENT_URL', WP_SITEURL . '/wp-content' );
@@ -71,21 +76,22 @@ define( 'WP_CONTENT_URL', WP_SITEURL . '/wp-content' );
 const PLATFORM_DIR = WP_CONTENT_DIR . '/platform';
 
 /**
- * mu-plugins dir
+ * Set mu-plugins dir
  */
 const WPMU_PLUGIN_DIR = WP_CONTENT_DIR . '/mu-plugins';
 define( 'WPMU_PLUGIN_URL', WP_CONTENT_URL . '/mu-plugins' );
 
 /**
- * plugins dir
+ * Set plugins dir
  */
 const PLUGIN_DIR = WP_CONTENT_DIR . '/plugins';
 define( 'PLUGIN_URL', WP_CONTENT_URL . '/plugins' );
 
 /**
- * Debud
+ * Debug
  */
-if ( $env = getenv( 'WP_DEBUG' ) ) {
+$env = getenv( 'WP_DEBUG' );
+if ( $env ) {
 	define( 'WP_DEBUG', $env );
 } else {
 	define( 'WP_DEBUG', false );
@@ -109,15 +115,18 @@ define( 'S3_UPLOADS_KEY', getenv( 'S3_UPLOADS_KEY' ) );
 define( 'S3_UPLOADS_SECRET', getenv( 'S3_UPLOADS_SECRET' ) );
 define( 'S3_UPLOADS_REGION', getenv( 'S3_UPLOADS_REGION' ) );
 
-if ( $s3_uploads_bucket_url = getenv( 'S3_UPLOADS_BUCKET_URL' ) ) {
+$s3_uploads_bucket_url = getenv( 'S3_UPLOADS_BUCKET_URL' );
+if ( $s3_uploads_bucket_url ) {
 	define( 'S3_UPLOADS_BUCKET_URL', $s3_uploads_bucket_url );
 }
 
-if ( $s3_endpoint = getenv( 'S3_UPLOADS_ENDPOINT' ) ) {
+$s3_endpoint = getenv( 'S3_UPLOADS_ENDPOINT' );
+if ( $s3_endpoint ) {
 	define( 'S3_UPLOADS_ENDPOINT', $s3_endpoint );
 }
 
-if ( $s3_skip_tls = getenv( 'S3_UPLOADS_SKIP_TLS' ) ) {
+$s3_skip_tls = getenv( 'S3_UPLOADS_SKIP_TLS' );
+if ( $s3_skip_tls ) {
 	define( 'S3_UPLOADS_SKIP_TLS', $s3_skip_tls );
 } else {
 	define( 'S3_UPLOADS_SKIP_TLS', false );
@@ -131,11 +140,13 @@ define( 'AWS_SES_WP_MAIL_KEY', getenv( 'AWS_SES_WP_MAIL_KEY' ) );
 define( 'AWS_SES_WP_MAIL_SECRET', getenv( 'AWS_SES_WP_MAIL_SECRET' ) );
 define( 'AWS_SES_WP_MAIL_REGION', getenv( 'AWS_SES_WP_MAIL_REGION' ) );
 
-if ( $ses_endpoint = getenv( 'AWS_SES_WP_MAIL_ENDPOINT' ) ) {
+$ses_endpoint = getenv( 'AWS_SES_WP_MAIL_ENDPOINT' );
+if ( $ses_endpoint ) {
 	define( 'AWS_SES_WP_MAIL_ENDPOINT', $ses_endpoint );
 }
 
-if ( $ses_skip_tls = getenv( 'AWS_SES_WP_MAIL_SKIP_TLS' ) ) {
+$ses_skip_tls = getenv( 'AWS_SES_WP_MAIL_SKIP_TLS' );
+if ( $ses_skip_tls ) {
 	define( 'AWS_SES_WP_MAIL_SKIP_TLS', $ses_skip_tls );
 } else {
 	define( 'AWS_SES_WP_MAIL_SKIP_TLS', false );

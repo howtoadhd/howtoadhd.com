@@ -1,8 +1,8 @@
 <?php
 /**
- * Configure AWS API.
+ * Configure AWS API for WP_MAIL & S3
  *
- * @package   HowToADHD/Platform
+ * @package HowToADHD/Platform
  *
  * Plugin Name: AWS Config
  * Description: Configure AWS API.

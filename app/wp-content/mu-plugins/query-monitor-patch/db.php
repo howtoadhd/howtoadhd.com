@@ -1,31 +1,13 @@
 <?php
-/*
-Plugin Name: Query Monitor Database Class
+/**
+ * Patched version of Query Monitor DB class
+ *
+ * @package HowToADHD\DB
+ */
 
-*********************************************************************
+defined( 'ABSPATH' ) || die();
 
-Ensure this file is symlinked to your wp-content directory to provide
-additional database query information in Query Monitor's output.
-
-*********************************************************************
-
-Copyright 2009-2017 John Blackbourn
-
-This program is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation; either version 2 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-*/
-
-defined( 'ABSPATH' ) or die();
-
-if ( defined( 'QM_DISABLED' ) and QM_DISABLED ) {
+if ( defined( 'QM_DISABLED' ) && QM_DISABLED ) {
 	return;
 }
 
@@ -40,7 +22,10 @@ if ( defined( 'DOING_CRON' ) && DOING_CRON ) {
 	return;
 }
 
-// No autoloaders for us. See https://github.com/johnbillion/query-monitor/issues/7
+/**
+ * No autoloaders for us.
+ * See https://github.com/johnbillion/query-monitor/issues/7
+ */
 $qm_dir    = PLUGIN_DIR . '/query-monitor';
 $backtrace = "{$qm_dir}/classes/Backtrace.php";
 if ( ! is_readable( $backtrace ) ) {
@@ -52,8 +37,21 @@ if ( ! defined( 'SAVEQUERIES' ) ) {
 	define( 'SAVEQUERIES', true );
 }
 
+
+/**
+ * Class QM_DB
+ *
+ * Query Monitor collector for LudicrousDB/WPDB.
+ */
 class QM_DB extends LudicrousDB {
 
+	/**
+	 * Query Monitor variables.
+	 *
+	 * Merges so we dont stomp LudicrousDB/WPDB vars.
+	 *
+	 * @var array
+	 */
 	public $qm_php_vars = [
 		'max_execution_time'  => null,
 		'memory_limit'        => null,
@@ -66,7 +64,7 @@ class QM_DB extends LudicrousDB {
 	/**
 	 * Class constructor
 	 */
-	function __construct() {
+	public function __construct() {
 
 		foreach ( $this->qm_php_vars as $setting => &$val ) {
 			$val = ini_get( $setting );
@@ -81,10 +79,11 @@ class QM_DB extends LudicrousDB {
 	 *
 	 * @see wpdb::query()
 	 *
-	 * @param string $query Database query
+	 * @param string $query Database query.
+	 *
 	 * @return int|false Number of rows affected/selected or false on error
 	 */
-	function query( $query ) {
+	public function query( $query ) {
 
 		if ( $this->show_errors ) {
 			$this->hide_errors();
