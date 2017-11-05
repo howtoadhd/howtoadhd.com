@@ -22,16 +22,16 @@ jobs:
 
     - stage: test
       before_script:
-        - cd app && composer install
+        - cd ./app && composer install
       script:
-        - cd app && ./vendor/bin/phpcs ./
+        - cd ./app && ./vendor/bin/phpcs ./
 
 
     - stage: test
       before_script:
-        - cd app && composer install
+        - cd ./app && composer install
       script:
-        - cd app && ./vendor/bin/phplint
+        - cd ./app && ./vendor/bin/phplint
 
 
     - stage: deploy
