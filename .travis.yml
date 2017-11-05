@@ -3,22 +3,29 @@ sudo: required
 services:
   - docker
 
+stages:
+  - deploy
+
 before_install:
   - curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
   - sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
   - sudo apt-get update
   - sudo apt-get -y install docker-ce
 
-before_script:
-  - make pull
+jobs:
+  include:
+    - stage: deploy
+      before_script:
+        - make pull
 
-script:
-  - make build
-  
-  - if [ "$TRAVIS_BRANCH" == "master" ]; then
-      docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
-      make travis-deploy;
-    fi
+      script:
+        - make build
+
+        - if [ "$TRAVIS_BRANCH" == "master" ]; then
+            docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
+            make travis-deploy;
+          fi
+
 notifications:
   webhooks:
     urls:
