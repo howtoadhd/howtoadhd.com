@@ -21,17 +21,23 @@ jobs:
   include:
 
     - stage: test
+      env:
+        - TEST=phpcs
       before_script:
-        - cd ./app && composer install
+        - cd ./app
+        - composer install
       script:
-        - cd ./app && ./vendor/bin/phpcs ./
+        - ./vendor/bin/phpcs ./
 
 
     - stage: test
+      env:
+        - TEST=phplint
       before_script:
-        - cd ./app && composer install
+        - cd ./app
+        - composer install
       script:
-        - cd ./app && ./vendor/bin/phplint
+        ./vendor/bin/phplint
 
 
     - stage: deploy
