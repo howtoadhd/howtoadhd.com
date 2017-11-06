@@ -1,7 +1,7 @@
 server {
     listen 80;
     server_name "~^www\.(.*)$" ;
-    return 301 https://$1$request_uri ;
+    return 301 https://$1$request_uri;
 }
 
 server {
@@ -14,7 +14,7 @@ server {
     real_ip_header X-Forwarded-For;
 
     if ($http_x_forwarded_proto != 'https') {
-        return 301 https://$host$request_uri?;
+        return 301 https://$host$request_uri;
     }
 
     if ($host ~* www\.(.*)) {
@@ -103,7 +103,7 @@ server {
         # Use the upstream for php5-fpm that we defined in nginx.conf
         fastcgi_pass   {{FASTCGI_PASS}};
 
-    # And get to serving the file!
-    fastcgi_index  index.php;
-}
+		# And get to serving the file!
+		fastcgi_index  index.php;
+	}
 }
