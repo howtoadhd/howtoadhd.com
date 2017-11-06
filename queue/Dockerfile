@@ -7,10 +7,15 @@ WORKDIR /var/www
 
 COPY --from=0 /var/www /var/www
 
-RUN apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing/ \
+RUN addgroup -S app \
+    && adduser -D -S -s /sbin/nologin -G app app \
+    && chown -R root:app /var/www \
+    && find /var/www -type d -exec chmod 550 {} \; \
+    && find /var/www -type f -exec chmod 440 {} \; \
+\
+    && apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing/ \
             php7-pcntl \
 \
-    && adduser cavalcade -S \
     && composer create-project \
             --stability=dev \
             --prefer-dist \
@@ -20,7 +25,7 @@ RUN apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/te
             dev-master \
     && ln -s /opt/cavalcade/bin/cavalcade /usr/bin/cavalcade
 
-USER cavalcade
+USER app
 
 COPY ./start-container.sh /start-container
 
