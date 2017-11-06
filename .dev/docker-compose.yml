@@ -62,7 +62,7 @@ services:
       - db
       - memcached
     volumes:
-      - ../app:/var/www
+      - ../app:/var/www:ro
     extra_hosts:
       - howtoadhd.test:172.18.0.1
     environment:
@@ -101,7 +101,7 @@ services:
       - db
       - memcached
     volumes:
-      - ../app:/var/www
+      - ../app:/var/www:ro
     extra_hosts:
       - howtoadhd.test:172.18.0.1
     environment:
@@ -145,7 +145,7 @@ services:
     depends_on:
       - php
     volumes:
-      - ../app:/var/www
+      - ../app:/var/www:ro
     environment:
       FASTCGI_PASS: php:9000
 
