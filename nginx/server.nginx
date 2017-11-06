@@ -1,7 +1,7 @@
 server {
     listen 80;
     server_name "~^www\.(.*)$" ;
-    return 301 https://$1$request_uri;
+    return 301 https://$1$request_uri$is_args$args;
 }
 
 server {
@@ -14,12 +14,7 @@ server {
     real_ip_header X-Forwarded-For;
 
     if ($http_x_forwarded_proto != 'https') {
-        return 301 https://$host$request_uri;
-    }
-
-    if ($host ~* www\.(.*)) {
-        set $host_without_www $1;
-        rewrite ^(.*)$ $scheme://$host_without_www$1 permanent;
+        return 301 https://$host$request_uri$is_args$args;
     }
 
     root /var/www/wordpress;
@@ -42,12 +37,19 @@ server {
         deny all;
     }
 
-    # Deny direct access to PHP files in the WordPress root.
-    location ~ /(wp-(activate|blog-header|comments-post|config-sample|cron|links-opml|load|mail|settings|signup|trackback|)|xmlrpc).php$ {
-        access_log off;
-        log_not_found off;
-        deny all;
-    }
+	# Deny direct access to PHP files in the WordPress root.
+	location ~ /(wp-(activate|blog-header|comments-post|config-sample|cron|links-opml|load|mail|settings|signup|trackback|)|xmlrpc).php$ {
+		access_log off;
+		log_not_found off;
+		deny all;
+	}
+
+	# Deny direct access to misc files in the WordPress root.
+	location ~ /(readme.html|composer.json|license.*|LICENSE.*)$ {
+		access_log off;
+		log_not_found off;
+		deny all;
+	}
 
     # Requests to WordPress are made in /wordpress/, which is at the same
     # level as /wp-content/. To properly handle these, we provide an alias
@@ -86,9 +88,23 @@ server {
         deny all;
     }
 
+	# We'll want to set a different X-Frame-Option header on posts which
+	# are embedded in other sites.
+	location ~ /embed/ {
+		set $embed_request 1;
+		try_files $uri $uri/ /index.php$is_args$args;
+	}
+
     location ~ \.php$ {
         client_max_body_size 150M;
         try_files      $uri =404;
+
+		# Set slightly different headers for oEmbed requests
+		if ( $embed_request ) {
+			add_header X-Frame-Option ALLOWALL;
+			add_header X-Content-Type-Options nosniff always;
+			add_header X-XSS-Protection "1; mode=block" always;
+		}
 
         # Include the fastcgi_params defaults provided by nginx
         include        /etc/nginx/fastcgi_params;
@@ -101,7 +117,7 @@ server {
         fastcgi_param   SCRIPT_FILENAME         $document_root$fastcgi_script_name;
 
         # Use the upstream for php5-fpm that we defined in nginx.conf
-        fastcgi_pass   {{FASTCGI_PASS}};
+        fastcgi_pass   php;
 
 		# And get to serving the file!
 		fastcgi_index  index.php;
