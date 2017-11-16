@@ -148,6 +148,7 @@ services:
       - ../app:/var/www:ro
     environment:
       FASTCGI_PASS: php:9000
+      ROOT_DOMAIN:  howtoadhd.test
 
   haproxy:
     image: haproxy:latest

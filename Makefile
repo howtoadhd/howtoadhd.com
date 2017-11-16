@@ -5,7 +5,7 @@ dev: pull build-dev run
 pull:
 	docker pull loreleiaurora/php-base:cli
 	docker pull loreleiaurora/php-base:fpm
-	docker pull nginx:mainline-alpine
+	docker pull howtoadhd/nginx-base:latest
 
 build:
 	docker build --no-cache -t howtoadhd/howtoadhd.com:app app

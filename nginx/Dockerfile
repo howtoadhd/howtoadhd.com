@@ -1,21 +1,12 @@
 FROM howtoadhd/howtoadhd.com:app
 # This exists to allow copying between images
 
-FROM nginx:mainline-alpine
-
-WORKDIR /var/www
+FROM howtoadhd/nginx-base:latest
 
 COPY --from=0 /var/www /var/www
 
-RUN addgroup -S app \
-    && adduser -D -S -s /sbin/nologin -G app app \
-    && chown -R root:app /var/www \
+RUN chown -R root:app /var/www /etc/nginx/html \
     && find /var/www -type d -exec chmod 550 {} \; \
-    && find /var/www -type f -exec chmod 440 {} \;
-
-COPY conf.nginx /etc/nginx/nginx.conf
-COPY server.nginx /etc/nginx/conf.d/default.conf
-
-COPY ./start-container.sh /start-container
-
-CMD ["/start-container"]
+    && find /var/www -type f -exec chmod 440 {} \; \
+    && find /etc/nginx/html -type d -exec chmod 550 {} \; \
+    && find /etc/nginx/html -type f -exec chmod 440 {} \;
