@@ -3,9 +3,10 @@ default: dev
 dev: pull build-dev run
 
 pull:
-	docker pull loreleiaurora/php-base:cli
-	docker pull loreleiaurora/php-base:fpm
+	docker pull howtoadhd/php-base:latest-cli
+	docker pull howtoadhd/php-base:latest-fpm
 	docker pull howtoadhd/nginx-base:latest
+	docker pull howtoadhd/cavalcare-runner:latest
 
 build:
 	docker build --no-cache -t howtoadhd/howtoadhd.com:app app
