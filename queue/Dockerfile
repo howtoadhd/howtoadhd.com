@@ -1,7 +1,7 @@
 FROM howtoadhd/howtoadhd.com:app
 # This exists to allow copying between images
 
-FROM howtoadhd/cavalcare-runner:latest
+FROM howtoadhd/cavalcade-runner:latest
 
 COPY --from=0 /var/www /var/www
 
