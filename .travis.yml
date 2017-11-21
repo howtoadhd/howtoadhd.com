@@ -16,6 +16,7 @@ before_install:
   - sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
   - sudo apt-get update
   - sudo apt-get -y install docker-ce
+  - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
 
 jobs:
   include:
@@ -48,7 +49,6 @@ jobs:
         - make build
 
         - if [ "$TRAVIS_BRANCH" == "master" ]; then
-            docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
             make travis-deploy;
           fi
 
