@@ -1,4 +1,10 @@
-FROM loreleiaurora/php-base:cli
+FROM howtoadhd/php-base:latest-cli
+
+ENV COMPOSER_URL https://getcomposer.org/download/1.5.1/composer.phar
+ENV COMPOSER_ALLOW_SUPERUSER 1
+
+RUN curl -L -o /usr/bin/composer "${COMPOSER_URL}" \
+    && chmod +x /usr/bin/composer
 
 COPY . /var/www
 
