@@ -17,64 +17,24 @@
   "minimum-stability": "dev",
   "prefer-stable": true,
   "repositories": [
-    {
+	{
+	  "type": "composer",
+	  "url": "https://howtoadhd.github.io/satis"
+	},
+	{
       "type": "composer",
       "url": "https://wpackagist.org"
-    },
-    {
-      "type": "vcs",
-      "url": "https://github.com/humanmade/batcache"
-    },
-    {
-      "type": "package",
-      "package": {
-        "name": "humanmade/memcached-object-cache",
-        "type": "wordpress-muplugin",
-        "version": "master",
-        "dist": {
-          "url": "https://github.com/humanmade/wordpress-pecl-memcached-object-cache/archive/master.zip",
-          "type": "zip"
-        }
-      }
-    },
-    {
-      "type": "package",
-      "package": {
-        "name": "humanmade/aws-ses-wp-mail",
-        "type": "wordpress-muplugin",
-        "version": "master",
-        "dist": {
-          "url": "https://github.com/humanmade/aws-ses-wp-mail/archive/571d1e03006354eac2bd5e73816466905857db96.zip",
-          "type": "zip"
-        }
-      }
     }
   ],
   "require": {
-    "aws/aws-sdk-php": "3.27.*",
-    "humanmade/aws-ses-wp-mail": "master",
-    "humanmade/batcache": "dev-master",
-    "humanmade/cavalcade": "dev-master",
-    "humanmade/memcached-object-cache": "dev-master",
-    "humanmade/s3-uploads": "dev-master",
-    "johnpbloch/wordpress": "4.8.*",
-    "stuttter/ludicrousdb": "^4.0",
+	"johnpbloch/wordpress-core": "4.9.*",
+	"howtoadhd/wp-platform": "*",
     "wpackagist-theme/twentyseventeen": "*"
   },
   "require-dev": {
     "wpackagist-plugin/rewrite-rules-inspector": "^1.2",
 	"howtoadhd/phpcs-ruleset": "dev-master",
 	"overtrue/phplint": "^0.2.4"
-  },
-  "extra": {
-    "installer-paths": {
-      "wp-content/platform/batcache/": ["humanmade/batcache"],
-      "wp-content/platform/object-cache/": ["humanmade/memcached-object-cache"],
-      "wp-content/platform/ludicrousdb/": ["stuttter/ludicrousdb"],
-      "wp-content/platform/aws-ses-wp-mail/": ["humanmade/aws-ses-wp-mail"],
-      "wp-content/platform/cavalcade/": ["humanmade/cavalcade"],
-      "wp-content/platform/s3-uploads/": ["humanmade/s3-uploads"]
-    }
   },
   "scripts": {
 	"config-set": [

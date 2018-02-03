@@ -28,34 +28,10 @@ services:
       - ../app:/var/www:ro
     extra_hosts:
       - howtoadhd.pink:172.18.0.1
+    env_file:
+      - config.env
     environment:
-      MYSQL_HOST: dev-services:3306
-      MYSQL_DATABASE: app
-      MYSQL_USER: app
-      MYSQL_PASSWORD: app
-      CACHE_HOST: dev-services
-      CACHE_PORT: 11211
-      AUTH_KEY: "B9MDMW+.;9&K>%Lz^_|7a1E;S3.EFT5D&X4{<tqD[3?`O!e3s-( f.MCx3~I&4(#"
-      SECURE_AUTH_KEY: "i9%FOl/KJ6%h+qk(D .M@GcWA+:F&!(%Rknx?mBG^yC+6+{bl8_=+ 1W/m^-E0SG"
-      LOGGED_IN_KEY: "(AHj/aCW-GC>IL4ea7|ep1Lv6tpCMD~W:aQW,q.X3N &-,U%w+0W2vJ-/GA6&mZm"
-      NONCE_KEY: "]VIj|#3Q#2f[?DiYoaBRmaZV9+(=+LD<+rNvk!AjzodroxDX};Tx/MWTIj9:#gX_"
-      AUTH_SALT: "i6/g2lij:kT}`cU^S&SShz2(^_(*O4ECr5c/-_gSMn*!4Y`ovOCqp*nC4VYYxMeH"
-      SECURE_AUTH_SALT: "lO^N@qvB{mYsq2XAU.qM<DOuk0(VvuBLP>FR50-Xy:Z=ny!/vC/<XT|NT|+[E%U "
-      LOGGED_IN_SALT: "-[?v6J-}4 )GnoS54e:I;C|z]75X-7frW+.k?Vf1o[IIFHF[GF((+I|uh[+|mEb/"
-      NONCE_SALT: "]=C%H0+ ldhdsIJv2~>CXn s%oRy22GAFFt-OT0<*.n/pL?B-zTA`S-{VSQ5HGS5"
       WP_DEBUG: "false"
-      S3_UPLOADS_ENDPOINT: https://s3.aws.howtoadhd.pink
-      S3_UPLOADS_SKIP_TLS: "true"
-      S3_UPLOADS_BUCKET_URL: https://s3.aws.howtoadhd.pink/mock
-      S3_UPLOADS_BUCKET: mock
-      S3_UPLOADS_KEY: mock
-      S3_UPLOADS_SECRET: mock
-      S3_UPLOADS_REGION: mock
-      AWS_SES_WP_MAIL_ENDPOINT: https://ses.aws.howtoadhd.pink
-      AWS_SES_WP_MAIL_REGION: mock
-      AWS_SES_WP_MAIL_KEY: mock
-      AWS_SES_WP_MAIL_SECRET: mock
-      AWS_SES_WP_MAIL_SKIP_TLS: "true"
 
   php:
     image: howtoadhd/howtoadhd.com:php-dev
@@ -66,38 +42,10 @@ services:
       - ../app:/var/www:ro
     extra_hosts:
       - howtoadhd.pink:172.18.0.1
+    env_file:
+      - config.env
     environment:
-      MYSQL_HOST: dev-services:3306
-      MYSQL_DATABASE: app
-      MYSQL_USER: app
-      MYSQL_PASSWORD: app
-      CACHE_HOST: dev-services
-      CACHE_PORT: 11211
-      DOMAIN: https://howtoadhd.pink/
-      INITIAL_USER: admin
-      INITIAL_PASSWORD: password
-      ADMIN_EMAIL: "admin@example.com"
-      AUTH_KEY: "B9MDMW+.;9&K>%Lz^_|7a1E;S3.EFT5D&X4{<tqD[3?`O!e3s-( f.MCx3~I&4(#"
-      SECURE_AUTH_KEY: "i9%FOl/KJ6%h+qk(D .M@GcWA+:F&!(%Rknx?mBG^yC+6+{bl8_=+ 1W/m^-E0SG"
-      LOGGED_IN_KEY: "(AHj/aCW-GC>IL4ea7|ep1Lv6tpCMD~W:aQW,q.X3N &-,U%w+0W2vJ-/GA6&mZm"
-      NONCE_KEY: "]VIj|#3Q#2f[?DiYoaBRmaZV9+(=+LD<+rNvk!AjzodroxDX};Tx/MWTIj9:#gX_"
-      AUTH_SALT: "i6/g2lij:kT}`cU^S&SShz2(^_(*O4ECr5c/-_gSMn*!4Y`ovOCqp*nC4VYYxMeH"
-      SECURE_AUTH_SALT: "lO^N@qvB{mYsq2XAU.qM<DOuk0(VvuBLP>FR50-Xy:Z=ny!/vC/<XT|NT|+[E%U "
-      LOGGED_IN_SALT: "-[?v6J-}4 )GnoS54e:I;C|z]75X-7frW+.k?Vf1o[IIFHF[GF((+I|uh[+|mEb/"
-      NONCE_SALT: "]=C%H0+ ldhdsIJv2~>CXn s%oRy22GAFFt-OT0<*.n/pL?B-zTA`S-{VSQ5HGS5"
       WP_DEBUG: "false"
-      S3_UPLOADS_ENDPOINT: https://s3.aws.howtoadhd.pink
-      S3_UPLOADS_SKIP_TLS: "true"
-      S3_UPLOADS_BUCKET_URL: https://s3.aws.howtoadhd.pink/mock
-      S3_UPLOADS_BUCKET: mock
-      S3_UPLOADS_KEY: mock
-      S3_UPLOADS_SECRET: mock
-      S3_UPLOADS_REGION: mock
-      AWS_SES_WP_MAIL_ENDPOINT: https://ses.aws.howtoadhd.pink
-      AWS_SES_WP_MAIL_REGION: mock
-      AWS_SES_WP_MAIL_KEY: mock
-      AWS_SES_WP_MAIL_SECRET: mock
-      AWS_SES_WP_MAIL_SKIP_TLS: "true"
       XDEBUG_CONFIG: "remote_host=192.168.0.45"
       PHP_IDE_CONFIG: "serverName=howtoadhd"
 

@@ -9,12 +9,8 @@
 /app/wp-content/upgrade/
 /app/wp-content/uploads/
 
-/app/wp-content/platform/aws-ses-wp-mail
-/app/wp-content/platform/batcache/
-/app/wp-content/platform/cavalcade/
-/app/wp-content/platform/ludicrousdb/
-/app/wp-content/platform/object-cache/
-/app/wp-content/platform/s3-uploads/
+/app/wp-content/platform
+/app/wp-content/db.php
 
 /app/wp-content/plugins/rewrite-rules-inspector/
 

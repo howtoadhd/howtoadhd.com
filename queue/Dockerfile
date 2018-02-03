@@ -3,6 +3,8 @@ FROM howtoadhd/howtoadhd.com:app
 
 FROM howtoadhd/cavalcade-runner:latest
 
+COPY ./fs /
+
 COPY --from=0 /var/www /var/www
 
 RUN chown -R root:app /var/www \

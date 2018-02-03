@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "e1820fe95c910eabb12dfa3bbfd9e8f3",
+    "content-hash": "b60e7d62ff93ad1144b63d1b4c7eb271",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -388,186 +388,173 @@
             "time": "2017-03-20T17:10:46+00:00"
         },
         {
-            "name": "humanmade/aws-ses-wp-mail",
-            "version": "master",
-            "dist": {
-                "type": "zip",
-                "url": "https://github.com/humanmade/aws-ses-wp-mail/archive/571d1e03006354eac2bd5e73816466905857db96.zip",
-                "reference": null,
-                "shasum": null
-            },
-            "type": "wordpress-muplugin"
-        },
-        {
-            "name": "humanmade/batcache",
+            "name": "howtoadhd/wp-platform",
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/humanmade/batcache.git",
-                "reference": "3dde082cde50bc1bc98ae5caf69ca2dec192d7ac"
+                "url": "https://github.com/howtoadhd/wp-platform.git",
+                "reference": "6763ce3eb6b306330383cdb8f685c62d90a00951"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/humanmade/batcache/zipball/3dde082cde50bc1bc98ae5caf69ca2dec192d7ac",
-                "reference": "3dde082cde50bc1bc98ae5caf69ca2dec192d7ac",
+                "url": "https://api.github.com/repos/howtoadhd/wp-platform/zipball/6763ce3eb6b306330383cdb8f685c62d90a00951",
+                "reference": "6763ce3eb6b306330383cdb8f685c62d90a00951",
                 "shasum": ""
             },
             "require": {
-                "composer/installers": "~1.0"
-            },
-            "type": "wordpress-muplugin",
-            "license": [
-                "GPL-2.0+"
-            ],
-            "description": "A memcached HTML page cache for WordPress.",
-            "homepage": "https://github.com/humanmade/batcache",
-            "support": {
-                "issues": "https://github.com/humanmade/batcache/issues",
-                "source": "https://github.com/humanmade/batcache"
-            },
-            "time": "2017-01-24T13:02:06+00:00"
-        },
-        {
-            "name": "humanmade/cavalcade",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/humanmade/Cavalcade.git",
-                "reference": "deca623ffa2830462f4fcae8d6130ea461396b20"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/humanmade/Cavalcade/zipball/deca623ffa2830462f4fcae8d6130ea461396b20",
-                "reference": "deca623ffa2830462f4fcae8d6130ea461396b20",
-                "shasum": ""
-            },
-            "require": {
-                "composer/installers": "~1.0"
+                "aws/aws-sdk-php": "3.27.*",
+                "howtoadhd/wp-platform-installer": "dev-master",
+                "php": ">=5.4"
             },
             "require-dev": {
-                "humanmade/coding-standards": "dev-master"
+                "howtoadhd/phpcs-ruleset": "dev-master",
+                "overtrue/phplint": "^1.0.2"
             },
-            "type": "wordpress-muplugin",
-            "notification-url": "https://packagist.org/downloads/",
+            "suggest": {
+                "johnpbloch/wordpress-core": "^4.6"
+            },
+            "type": "wp-platform",
+            "autoload": {
+                "psr-4": {
+                    "HowToADHD\\WPPlatform\\": "src/"
+                }
+            },
+            "scripts": {
+                "analyse:phpcs": [
+                    "phpcs ."
+                ],
+                "analyse:phplint": [
+                    "phplint"
+                ],
+                "analyse": [
+                    "@analyse:phplint",
+                    "@analyse:phpcs"
+                ],
+                "fix:phpcbf": [
+                    "phpcbf ."
+                ],
+                "fix": [
+                    "@fix:phpcbf"
+                ]
+            },
             "license": [
                 "GPL-2.0+"
             ],
             "authors": [
                 {
-                    "name": "Human Made",
-                    "homepage": "https://hmn.md/"
+                    "name": "Lorelei Aurora",
+                    "email": "iam@l5i.me"
                 }
             ],
-            "description": "A better wp-cron. Horizontally scalable, works perfectly with multisite.",
-            "homepage": "https://github.com/humanmade/Cavalcade",
-            "time": "2017-12-15T00:55:53+00:00"
-        },
-        {
-            "name": "humanmade/memcached-object-cache",
-            "version": "master",
-            "dist": {
-                "type": "zip",
-                "url": "https://github.com/humanmade/wordpress-pecl-memcached-object-cache/archive/master.zip",
-                "reference": null,
-                "shasum": null
+            "description": "WordPress platform tools for HowToADHD",
+            "homepage": "https://github.com/howtoadhd/wp-platform",
+            "support": {
+                "issues": "https://github.com/howtoadhd/wp-platform/issues",
+                "source": "https://github.com/howtoadhd/wp-platform"
             },
-            "type": "wordpress-muplugin"
+            "time": "2018-02-03T17:35:42+00:00"
         },
         {
-            "name": "humanmade/s3-uploads",
+            "name": "howtoadhd/wp-platform-installer",
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/humanmade/S3-Uploads.git",
-                "reference": "dbbd1c418eb4ca5ac135223e3c79c869229e79e9"
+                "url": "https://github.com/howtoadhd/wp-platform-installer.git",
+                "reference": "273200694c1871648e70f46ae4ae024516e7c450"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/humanmade/S3-Uploads/zipball/dbbd1c418eb4ca5ac135223e3c79c869229e79e9",
-                "reference": "dbbd1c418eb4ca5ac135223e3c79c869229e79e9",
+                "url": "https://api.github.com/repos/howtoadhd/wp-platform-installer/zipball/273200694c1871648e70f46ae4ae024516e7c450",
+                "reference": "273200694c1871648e70f46ae4ae024516e7c450",
                 "shasum": ""
             },
             "require": {
-                "aws/aws-sdk-php": "~3.18",
-                "composer/installers": "~1.0"
+                "composer-plugin-api": "^1.0"
             },
-            "type": "wordpress-plugin",
-            "notification-url": "https://packagist.org/downloads/",
+            "conflict": {
+                "johnpbloch/wordpress-core-installer": "*"
+            },
+            "require-dev": {
+                "composer/composer": "^1.0",
+                "overtrue/phplint": "^1.0",
+                "phpunit/phpunit": ">=4.8.35",
+                "squizlabs/php_codesniffer": "^3.2",
+                "wimg/php-compatibility": "^8.1"
+            },
+            "type": "composer-plugin",
+            "extra": {
+                "class": "HowToADHD\\Composer\\WPPlatformPlugin"
+            },
+            "autoload": {
+                "psr-4": {
+                    "HowToADHD\\Composer\\": "src/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Tests\\HowToADHD\\Composer\\": "tests/"
+                }
+            },
+            "scripts": {
+                "analyse:phpcs": [
+                    "phpcs ."
+                ],
+                "analyse:phplint": [
+                    "phplint"
+                ],
+                "analyse": [
+                    "@analyse:phplint",
+                    "@analyse:phpcs"
+                ],
+                "fix:phpcbf": [
+                    "phpcbf ."
+                ],
+                "fix": [
+                    "@fix:phpcbf"
+                ],
+                "test:phpunit": [
+                    "phpunit"
+                ],
+                "test": [
+                    "@test:phpunit"
+                ]
+            },
             "license": [
                 "GPL-2.0+"
             ],
             "authors": [
                 {
-                    "name": "Human Made Limited",
-                    "email": "support@humanmade.co.uk",
-                    "homepage": "http://hmn.md/"
+                    "name": "Lorelei Aurora",
+                    "email": "iam@l5i.me"
                 }
             ],
-            "description": "WordPress plugin to store uploads on S3",
-            "homepage": "https://github.com/humanmade/S3-Uploads",
-            "keywords": [
-                "wordpress"
-            ],
-            "time": "2017-12-20T15:28:59+00:00"
-        },
-        {
-            "name": "johnpbloch/wordpress",
-            "version": "4.8.5",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/johnpbloch/wordpress.git",
-                "reference": "4c6e2ef799e270a4d69198430a92efa4ba09e346"
+            "description": "Composer plugin to install the HowToADHD WPPlatform",
+            "homepage": "https://github.com/howtoadhd/wp-platform-installer",
+            "support": {
+                "issues": "https://github.com/howtoadhd/wp-platform-installer/issues",
+                "source": "https://github.com/howtoadhd/wp-platform-installer"
             },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/johnpbloch/wordpress/zipball/4c6e2ef799e270a4d69198430a92efa4ba09e346",
-                "reference": "4c6e2ef799e270a4d69198430a92efa4ba09e346",
-                "shasum": ""
-            },
-            "require": {
-                "johnpbloch/wordpress-core": "4.8.5",
-                "johnpbloch/wordpress-core-installer": "^1.0",
-                "php": ">=5.3.2"
-            },
-            "type": "package",
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-2.0+"
-            ],
-            "authors": [
-                {
-                    "name": "WordPress Community",
-                    "homepage": "http://wordpress.org/about/"
-                }
-            ],
-            "description": "WordPress is web software you can use to create a beautiful website or blog.",
-            "homepage": "http://wordpress.org/",
-            "keywords": [
-                "blog",
-                "cms",
-                "wordpress"
-            ],
-            "time": "2018-01-16T23:12:31+00:00"
+            "time": "2018-01-30T03:10:46+00:00"
         },
         {
             "name": "johnpbloch/wordpress-core",
-            "version": "4.8.5",
+            "version": "4.9.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/johnpbloch/wordpress-core.git",
-                "reference": "5d35256ae5ff1e857b76323241118c0c94a33847"
+                "reference": "59292fac30315323ce99e1a1d362015581e5d8e6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/johnpbloch/wordpress-core/zipball/5d35256ae5ff1e857b76323241118c0c94a33847",
-                "reference": "5d35256ae5ff1e857b76323241118c0c94a33847",
+                "url": "https://api.github.com/repos/johnpbloch/wordpress-core/zipball/59292fac30315323ce99e1a1d362015581e5d8e6",
+                "reference": "59292fac30315323ce99e1a1d362015581e5d8e6",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.2"
             },
             "provide": {
-                "wordpress/core-implementation": "4.8.5"
+                "wordpress/core-implementation": "4.9.2"
             },
             "type": "wordpress-core",
             "notification-url": "https://packagist.org/downloads/",
@@ -587,56 +574,7 @@
                 "cms",
                 "wordpress"
             ],
-            "time": "2018-01-16T23:12:27+00:00"
-        },
-        {
-            "name": "johnpbloch/wordpress-core-installer",
-            "version": "1.0.0.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/johnpbloch/wordpress-core-installer.git",
-                "reference": "7941acd71725710a789daabe0557429da63e7ac6"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/johnpbloch/wordpress-core-installer/zipball/7941acd71725710a789daabe0557429da63e7ac6",
-                "reference": "7941acd71725710a789daabe0557429da63e7ac6",
-                "shasum": ""
-            },
-            "require": {
-                "composer-plugin-api": "^1.0"
-            },
-            "conflict": {
-                "composer/installers": "<1.0.6"
-            },
-            "require-dev": {
-                "composer/composer": "^1.0",
-                "phpunit/phpunit": ">=4.8.35"
-            },
-            "type": "composer-plugin",
-            "extra": {
-                "class": "johnpbloch\\Composer\\WordPressCorePlugin"
-            },
-            "autoload": {
-                "psr-0": {
-                    "johnpbloch\\Composer\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-2.0+"
-            ],
-            "authors": [
-                {
-                    "name": "John P. Bloch",
-                    "email": "me@johnpbloch.com"
-                }
-            ],
-            "description": "A custom installer to handle deploying WordPress with composer",
-            "keywords": [
-                "wordpress"
-            ],
-            "time": "2018-01-29T14:49:29+00:00"
+            "time": "2018-01-16T23:12:12+00:00"
         },
         {
             "name": "mtdowling/jmespath.php",
@@ -742,43 +680,6 @@
                 "response"
             ],
             "time": "2016-08-06T14:39:51+00:00"
-        },
-        {
-            "name": "stuttter/ludicrousdb",
-            "version": "4.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/stuttter/ludicrousdb.git",
-                "reference": "901e48c52658ca59ba7403cac676891f54b9d38f"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/stuttter/ludicrousdb/zipball/901e48c52658ca59ba7403cac676891f54b9d38f",
-                "reference": "901e48c52658ca59ba7403cac676891f54b9d38f",
-                "shasum": ""
-            },
-            "require": {
-                "composer/installers": "~1.0",
-                "php": ">=5.2"
-            },
-            "type": "wordpress-muplugin",
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-2.0+"
-            ],
-            "authors": [
-                {
-                    "name": "John James Jacoby",
-                    "email": "johnjamesjacoby@me.com"
-                },
-                {
-                    "name": "Jonny Harris",
-                    "email": "jon@spacedmonkey.co.uk"
-                }
-            ],
-            "description": "LudicrousDB is a database class that supports replication, failover, load balancing, & partitioning, based on Automattic's HyperDB drop-in.",
-            "homepage": "https://github.com/stuttter/ludicrousdb",
-            "time": "2017-11-04T23:50:46+00:00"
         },
         {
             "name": "wpackagist-theme/twentyseventeen",
@@ -1444,10 +1345,6 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "humanmade/batcache": 20,
-        "humanmade/cavalcade": 20,
-        "humanmade/memcached-object-cache": 20,
-        "humanmade/s3-uploads": 20,
         "howtoadhd/phpcs-ruleset": 20
     },
     "prefer-stable": true,

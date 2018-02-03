@@ -47,17 +47,16 @@ php -r '
 	echo "Could not connect after $max_attempts attempts!" . PHP_EOL;
 	exit( 1 );'
 
-ATTEMPT=0
-until `wp core is-installed --allow-root`; do
-    echo "WordPress is not installed, retrying..."
+if ! $(wp core is-installed --allow-root); then
+    wp core install \
+        --url="${DOMAIN}" \
+        --title="How To ADHD" \
+        --admin_user="${INITIAL_USER}" \
+        --admin_password="${INITIAL_PASSWORD}" \
+        --admin_email="${ADMIN_EMAIL}" \
+        --skip-email \
+        --allow-root
+fi
+echo "WordPress is installed, starting Cavalcade..."
 
-    if [ ${ATTEMPT} == 300 ]; then
-        exit 1
-    fi
-
-    sleep 5
-    ATTEMPT=${ATTEMPT}+1
-done
-echo "WordPress is installed, starting PHP-FPM..."
-
-php-fpm7
+/usr/bin/cavalcade /var/www/wordpress

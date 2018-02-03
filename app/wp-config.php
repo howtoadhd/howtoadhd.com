@@ -17,28 +17,10 @@ if ( isset( $_SERVER['HTTP_X_FORWARDED_PROTO'] ) && strpos( $_SERVER['HTTP_X_FOR
 /**
  * MySQL settings
  */
-define( 'DB_NAME', getenv( 'MYSQL_DATABASE' ) );
-define( 'DB_USER', getenv( 'MYSQL_USER' ) );
-define( 'DB_PASSWORD', getenv( 'MYSQL_PASSWORD' ) );
-define( 'DB_HOST', getenv( 'MYSQL_HOST' ) );
-
 define( 'DB_COLLATE', 'utf8mb4_general_ci' );
 define( 'DB_CHARSET', 'utf8mb4' );
 
 $table_prefix = 'wp_';
-
-/**
- * Memcached settings
- */
-const WP_CACHE = true;
-
-global $memcached_servers;
-$memcached_servers = [
-	[
-		getenv( 'CACHE_HOST' ),
-		getenv( 'CACHE_PORT' ),
-	],
-];
 
 /**
  * Authentication keys and salts
@@ -71,11 +53,6 @@ const WP_CONTENT_DIR = __DIR__ . '/wp-content';
 define( 'WP_CONTENT_URL', WP_SITEURL . '/wp-content' );
 
 /**
- * Set platform dir
- */
-const PLATFORM_DIR = WP_CONTENT_DIR . '/platform';
-
-/**
  * Set mu-plugins dir
  */
 const WPMU_PLUGIN_DIR = WP_CONTENT_DIR . '/mu-plugins';
@@ -98,60 +75,9 @@ if ( $env ) {
 }
 unset( $env );
 
-/**
- * Disable wp-cron
- */
-define( 'DISABLE_WP_CRON', true );
-
 if ( ! defined( 'ABSPATH' ) ) {
 	define( 'ABSPATH', __DIR__ . '/wordpress/' );
 }
-
-/**
- * S3 Uploads / Tachyon image server
- */
-define( 'S3_UPLOADS_BUCKET', getenv( 'S3_UPLOADS_BUCKET' ) );
-define( 'S3_UPLOADS_KEY', getenv( 'S3_UPLOADS_KEY' ) );
-define( 'S3_UPLOADS_SECRET', getenv( 'S3_UPLOADS_SECRET' ) );
-define( 'S3_UPLOADS_REGION', getenv( 'S3_UPLOADS_REGION' ) );
-
-$s3_uploads_bucket_url = getenv( 'S3_UPLOADS_BUCKET_URL' );
-if ( $s3_uploads_bucket_url ) {
-	define( 'S3_UPLOADS_BUCKET_URL', $s3_uploads_bucket_url );
-}
-
-$s3_endpoint = getenv( 'S3_UPLOADS_ENDPOINT' );
-if ( $s3_endpoint ) {
-	define( 'S3_UPLOADS_ENDPOINT', $s3_endpoint );
-}
-
-$s3_skip_tls = getenv( 'S3_UPLOADS_SKIP_TLS' );
-if ( $s3_skip_tls ) {
-	define( 'S3_UPLOADS_SKIP_TLS', $s3_skip_tls );
-} else {
-	define( 'S3_UPLOADS_SKIP_TLS', false );
-}
-unset( $s3_uploads_bucket_url, $s3_endpoint, $s3_skip_tls );
-
-/**
- * SES WP Main
- */
-define( 'AWS_SES_WP_MAIL_KEY', getenv( 'AWS_SES_WP_MAIL_KEY' ) );
-define( 'AWS_SES_WP_MAIL_SECRET', getenv( 'AWS_SES_WP_MAIL_SECRET' ) );
-define( 'AWS_SES_WP_MAIL_REGION', getenv( 'AWS_SES_WP_MAIL_REGION' ) );
-
-$ses_endpoint = getenv( 'AWS_SES_WP_MAIL_ENDPOINT' );
-if ( $ses_endpoint ) {
-	define( 'AWS_SES_WP_MAIL_ENDPOINT', $ses_endpoint );
-}
-
-$ses_skip_tls = getenv( 'AWS_SES_WP_MAIL_SKIP_TLS' );
-if ( $ses_skip_tls ) {
-	define( 'AWS_SES_WP_MAIL_SKIP_TLS', $ses_skip_tls );
-} else {
-	define( 'AWS_SES_WP_MAIL_SKIP_TLS', false );
-}
-unset( $ses_endpoint, $ses_skip_tls );
 
 /**
  * Dont concat scripts
@@ -163,4 +89,7 @@ const CONCATENATE_SCRIPTS = false;
  */
 require_once __DIR__ . '/vendor/autoload.php';
 require_once __DIR__ . '/roles.php';
+
+\HowToADHD\WPPlatform\PlatformFactory::create()
+	->register();
 require_once ABSPATH . 'wp-settings.php';
