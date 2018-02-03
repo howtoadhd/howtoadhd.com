@@ -1,76 +1,39 @@
 version: "3"
 
 services:
-  fake-s3:
-    image: lphoward/fake-s3
+  dev-services:
+    image: howtoadhd/dev-services
     restart: always
     volumes:
-      - ./data/uploads:/fakes3_root
-
-  fake-ses:
-    image: howtoadhd/ses-mock:latest
-    restart: always
-    volumes:
-      - ./data/mail:/sesmock_root
-
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin
-    restart: always
-    depends_on:
-      - db
-    environment:
-      PMA_USER: wordpress
-      PMA_PASSWORD: wordpress
-
-  phpmemcacheadmin:
-    image: hitwe/phpmemcachedadmin
-    restart: always
-    depends_on:
-      - memcached
-
-  db:
-    image: mariadb:latest
-    restart: always
+      - ./data:/data
     ports:
+      - 80:80
+      - 443:443
       - 3306:3306
-    volumes:
-      - ./data/db:/var/lib/mysql
-    environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: wordpress
-      MYSQL_USER: wordpress
-      MYSQL_PASSWORD: wordpress
-
-  memcached:
-    image: memcached:latest
-    restart: always
-    ports:
-      - 11211:11211
-
-  ca:
-    image: loreleiaurora/openssl:latest
-    volumes:
-      - ./ca/maybe-gen-crt.sh:/maybe-gen-crt.sh
-      - ./ca/openssl.cnf:/openssl.cnf
-      - ./data/ca/:/ca
-    command: [ '/maybe-gen-crt.sh' ]
+      - 11212:11212
+    networks:
+      default:
+        aliases:
+          - aws.howtoadhd.pink
+          - s3.aws.howtoadhd.pink
+          - ses.aws.howtoadhd.pink
+          - mock.s3.aws.howtoadhd.pink
 
   queue:
     image: howtoadhd/howtoadhd.com:queue
     restart: always
     depends_on:
-      - db
-      - memcached
+      - dev-services
     volumes:
       - ../app:/var/www:ro
     extra_hosts:
-      - howtoadhd.test:172.18.0.1
+      - howtoadhd.pink:172.18.0.1
     environment:
-      MYSQL_HOST: db:3306
-      MYSQL_DATABASE: wordpress
-      MYSQL_USER: wordpress
-      MYSQL_PASSWORD: wordpress
-      CACHE_HOST: memcached
+      MYSQL_HOST: dev-services:3306
+      MYSQL_DATABASE: app
+      MYSQL_USER: app
+      MYSQL_PASSWORD: app
+      CACHE_HOST: dev-services
       CACHE_PORT: 11211
       AUTH_KEY: "B9MDMW+.;9&K>%Lz^_|7a1E;S3.EFT5D&X4{<tqD[3?`O!e3s-( f.MCx3~I&4(#"
       SECURE_AUTH_KEY: "i9%FOl/KJ6%h+qk(D .M@GcWA+:F&!(%Rknx?mBG^yC+6+{bl8_=+ 1W/m^-E0SG"
@@ -81,14 +44,14 @@ services:
       LOGGED_IN_SALT: "-[?v6J-}4 )GnoS54e:I;C|z]75X-7frW+.k?Vf1o[IIFHF[GF((+I|uh[+|mEb/"
       NONCE_SALT: "]=C%H0+ ldhdsIJv2~>CXn s%oRy22GAFFt-OT0<*.n/pL?B-zTA`S-{VSQ5HGS5"
       WP_DEBUG: "false"
-      S3_UPLOADS_ENDPOINT: https://howtoadhd.test:4569
+      S3_UPLOADS_ENDPOINT: https://s3.aws.howtoadhd.pink
       S3_UPLOADS_SKIP_TLS: "true"
-      S3_UPLOADS_BUCKET_URL: https://howtoadhd.test:4569/mock
+      S3_UPLOADS_BUCKET_URL: https://s3.aws.howtoadhd.pink/mock
       S3_UPLOADS_BUCKET: mock
       S3_UPLOADS_KEY: mock
       S3_UPLOADS_SECRET: mock
       S3_UPLOADS_REGION: mock
-      AWS_SES_WP_MAIL_ENDPOINT: https://howtoadhd.test:4568
+      AWS_SES_WP_MAIL_ENDPOINT: https://ses.aws.howtoadhd.pink
       AWS_SES_WP_MAIL_REGION: mock
       AWS_SES_WP_MAIL_KEY: mock
       AWS_SES_WP_MAIL_SECRET: mock
@@ -98,20 +61,19 @@ services:
     image: howtoadhd/howtoadhd.com:php-dev
     restart: always
     depends_on:
-      - db
-      - memcached
+      - dev-services
     volumes:
       - ../app:/var/www:ro
     extra_hosts:
-      - howtoadhd.test:172.18.0.1
+      - howtoadhd.pink:172.18.0.1
     environment:
-      MYSQL_HOST: db:3306
-      MYSQL_DATABASE: wordpress
-      MYSQL_USER: wordpress
-      MYSQL_PASSWORD: wordpress
-      CACHE_HOST: memcached
+      MYSQL_HOST: dev-services:3306
+      MYSQL_DATABASE: app
+      MYSQL_USER: app
+      MYSQL_PASSWORD: app
+      CACHE_HOST: dev-services
       CACHE_PORT: 11211
-      DOMAIN: https://howtoadhd.test/
+      DOMAIN: https://howtoadhd.pink/
       INITIAL_USER: admin
       INITIAL_PASSWORD: password
       ADMIN_EMAIL: "admin@example.com"
@@ -124,14 +86,14 @@ services:
       LOGGED_IN_SALT: "-[?v6J-}4 )GnoS54e:I;C|z]75X-7frW+.k?Vf1o[IIFHF[GF((+I|uh[+|mEb/"
       NONCE_SALT: "]=C%H0+ ldhdsIJv2~>CXn s%oRy22GAFFt-OT0<*.n/pL?B-zTA`S-{VSQ5HGS5"
       WP_DEBUG: "false"
-      S3_UPLOADS_ENDPOINT: https://howtoadhd.test:4569
+      S3_UPLOADS_ENDPOINT: https://s3.aws.howtoadhd.pink
       S3_UPLOADS_SKIP_TLS: "true"
-      S3_UPLOADS_BUCKET_URL: https://howtoadhd.test:4569/mock
+      S3_UPLOADS_BUCKET_URL: https://s3.aws.howtoadhd.pink/mock
       S3_UPLOADS_BUCKET: mock
       S3_UPLOADS_KEY: mock
       S3_UPLOADS_SECRET: mock
       S3_UPLOADS_REGION: mock
-      AWS_SES_WP_MAIL_ENDPOINT: https://howtoadhd.test:4568
+      AWS_SES_WP_MAIL_ENDPOINT: https://ses.aws.howtoadhd.pink
       AWS_SES_WP_MAIL_REGION: mock
       AWS_SES_WP_MAIL_KEY: mock
       AWS_SES_WP_MAIL_SECRET: mock
@@ -148,25 +110,4 @@ services:
       - ../app:/var/www:ro
     environment:
       FASTCGI_PASS: php:9000
-      ROOT_DOMAIN:  howtoadhd.test
-
-  haproxy:
-    image: haproxy:latest
-    restart: always
-    depends_on:
-      - nginx
-      - ca
-      - fake-s3
-      - fake-ses
-      - phpmyadmin
-      - phpmemcacheadmin
-    volumes:
-      - ./data/ca/:/ca
-      - ./haproxy/haproxy.cfg/:/usr/local/etc/haproxy/haproxy.cfg
-    ports:
-      - 80:80
-      - 443:443
-      - 3307:3307
-      - 4568:4568
-      - 4569:4569
-      - 11212:11212
+      ROOT_DOMAIN:  howtoadhd.pink

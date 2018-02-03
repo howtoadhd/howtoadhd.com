@@ -7,6 +7,7 @@ pull:
 	docker pull howtoadhd/php-base:latest-fpm
 	docker pull howtoadhd/nginx-base:latest
 	docker pull howtoadhd/cavalcade-runner:latest
+	docker pull howtoadhd/dev-services:latest
 
 build:
 	docker build --no-cache -t howtoadhd/howtoadhd.com:app app
