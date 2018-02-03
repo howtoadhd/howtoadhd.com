@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "9f5a53a06901207af73125f99a1ce90b",
+    "content-hash": "e1820fe95c910eabb12dfa3bbfd9e8f3",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -837,41 +837,6 @@
                 "wordpress"
             ],
             "time": "2017-11-04T15:26:35+00:00"
-        },
-        {
-            "name": "johnbillion/query-monitor",
-            "version": "2.16.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/johnbillion/query-monitor.git",
-                "reference": "8fd45a3ef46000fdf2de9bd0edbb31766e77d342"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/johnbillion/query-monitor/zipball/8fd45a3ef46000fdf2de9bd0edbb31766e77d342",
-                "reference": "8fd45a3ef46000fdf2de9bd0edbb31766e77d342",
-                "shasum": ""
-            },
-            "require": {
-                "composer/installers": "~1.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~5.7"
-            },
-            "type": "wordpress-plugin",
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-2.0+"
-            ],
-            "authors": [
-                {
-                    "name": "John Blackbourn",
-                    "homepage": "https://johnblackbourn.com/"
-                }
-            ],
-            "description": "WordPress plugin for monitoring database queries, hooks, conditionals, HTTP requests, query vars, environment, redirects, and more.",
-            "homepage": "https://github.com/johnbillion/query-monitor/",
-            "time": "2017-11-03T18:56:47+00:00"
         },
         {
             "name": "overtrue/phplint",

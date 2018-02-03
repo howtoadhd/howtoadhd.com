@@ -62,7 +62,6 @@
     "wpackagist-theme/twentyseventeen": "*"
   },
   "require-dev": {
-    "johnbillion/query-monitor": "^2.15",
     "wpackagist-plugin/rewrite-rules-inspector": "^1.2",
 	"howtoadhd/phpcs-ruleset": "dev-master",
 	"overtrue/phplint": "^0.2.4"
