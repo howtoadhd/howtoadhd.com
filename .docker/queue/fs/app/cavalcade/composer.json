@@ -1,0 +1,16 @@
+{
+  "name": "howtoadhd/cavalcade-runner",
+  "type": "project",
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "require": {
+    "oomphinc/composer-installers-extender": "^1.1",
+    "humanmade/cavalcade-runner": "dev-master"
+  },
+  "extra": {
+    "installer-types": ["library"],
+    "installer-paths": {
+      "runner": ["humanmade/cavalcade-runner"]
+    }
+  }
+}

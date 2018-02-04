@@ -59,4 +59,4 @@ if ! $(wp core is-installed --allow-root); then
 fi
 echo "WordPress is installed, starting Cavalcade..."
 
-/usr/bin/cavalcade /app/www/wordpress
+/app/cavalcade/runner/bin/cavalcade /app/www/wordpress
