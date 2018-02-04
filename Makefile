@@ -3,15 +3,15 @@ default: dev
 dev: pull build-dev run
 
 pull:
+	docker pull howtoadhd/base-images:latest-php-fpm
 	docker pull howtoadhd/php-base:latest-cli
-	docker pull howtoadhd/php-base:latest-fpm
 	docker pull howtoadhd/nginx-base:latest
 	docker pull howtoadhd/cavalcade-runner:latest
 	docker pull howtoadhd/dev-services:latest
 
 build:
 	docker build --no-cache -t howtoadhd/howtoadhd.com:app app
-	docker build --no-cache -t howtoadhd/howtoadhd.com:php php
+	docker build --no-cache -t howtoadhd/howtoadhd.com:php .docker/php
 	docker build --no-cache -t howtoadhd/howtoadhd.com:nginx nginx
 	docker build --no-cache -t howtoadhd/howtoadhd.com:queue queue
 

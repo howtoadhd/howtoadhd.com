@@ -1,14 +1,11 @@
 FROM howtoadhd/howtoadhd.com:app
 # This exists to allow copying between images
 
-FROM howtoadhd/php-base:latest-fpm
+FROM howtoadhd/base-images:latest-php-fpm
 
-COPY --from=0 /app/www /app/www
+COPY --from=0 /app /app
 
-RUN chown -R root:app /app/www \
+RUN chown -R app:app /app \
+	&& chmod 550 /app \
     && find /app/www -type d -exec chmod 550 {} \; \
     && find /app/www -type f -exec chmod 440 {} \;
-
-COPY ./start-container.sh /start-container
-
-CMD ["/start-container"]
