@@ -12,7 +12,7 @@ pull:
 build:
 	docker build --no-cache -t howtoadhd/howtoadhd.com:app app
 	docker build --no-cache -t howtoadhd/howtoadhd.com:php .docker/php
-	docker build --no-cache -t howtoadhd/howtoadhd.com:nginx nginx
+	docker build --no-cache -t howtoadhd/howtoadhd.com:nginx .docker/nginx
 	docker build --no-cache -t howtoadhd/howtoadhd.com:queue queue
 
 build-dev: build
