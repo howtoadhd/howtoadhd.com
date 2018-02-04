@@ -1,10 +1,10 @@
 #!/usr/bin/env sh
 set -e
 
-cd /var/www/wordpress
+cd /app/www/wordpress
 
 php -r '
-    require "/var/www/vendor/autoload.php";
+    require "/app/www/vendor/autoload.php";
 
 	use HowToADHD\WPPlatform\Service\Database;
 

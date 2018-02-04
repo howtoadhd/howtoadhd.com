@@ -8,14 +8,8 @@
 	<exclude-pattern>/vendor/*</exclude-pattern>
 	<exclude-pattern>/wordpress/*</exclude-pattern>
 
-	<exclude-pattern>/wp-content/platform/aws-ses-wp-mail/*</exclude-pattern>
-	<exclude-pattern>/wp-content/platform/batcache/*</exclude-pattern>
-	<exclude-pattern>/wp-content/platform/cavalcade/*</exclude-pattern>
-	<exclude-pattern>/wp-content/platform/ludicrousdb/*</exclude-pattern>
-	<exclude-pattern>/wp-content/platform/object-cache/*</exclude-pattern>
-	<exclude-pattern>/wp-content/platform/s3-uploads/*</exclude-pattern>
+	<exclude-pattern>/wp-content/platform/*</exclude-pattern>
 
-	<exclude-pattern>/wp-content/plugins/query-monitor/*</exclude-pattern>
 	<exclude-pattern>/wp-content/plugins/rewrite-rules-inspector/*</exclude-pattern>
 
 	<exclude-pattern>/wp-content/themes/twentyseventeen/*</exclude-pattern>

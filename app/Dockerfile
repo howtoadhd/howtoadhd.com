@@ -6,12 +6,12 @@ ENV COMPOSER_ALLOW_SUPERUSER 1
 RUN curl -L -o /usr/bin/composer "${COMPOSER_URL}" \
     && chmod +x /usr/bin/composer
 
-COPY . /var/www
+COPY . /app/www
 
 RUN apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing/ \
             git
 
-RUN cd /var/www \
+RUN cd /app/www \
     && composer install \
         --no-ansi \
         --no-dev \

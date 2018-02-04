@@ -1,6 +1,6 @@
 <?php
 
-require "/var/www/vendor/autoload.php";
+require "/app/www/vendor/autoload.php";
 
 use HowToADHD\WPPlatform\Service\Database;
 

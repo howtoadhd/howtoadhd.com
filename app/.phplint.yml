@@ -6,14 +6,8 @@ exclude:
   - vendor
   - wordpress
 
-  - wp-content/platform/aws-ses-wp-mail
-  - wp-content/platform/batcache
-  - wp-content/platform/cavalcade
-  - wp-content/platform/ludicrousdb
-  - wp-content/platform/object-cache
-  - wp-content/platform/s3-uploads
+  - wp-content/platform
 
-  - wp-content/plugins/query-monitor
   - wp-content/plugins/rewrite-rules-inspector
 
   - wp-content/themes/twentyseventeen
