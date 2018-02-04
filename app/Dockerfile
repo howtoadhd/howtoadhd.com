@@ -1,15 +1,22 @@
-FROM howtoadhd/php-base:latest-cli
+FROM howtoadhd/base-images:latest-php-cli
 
-ENV COMPOSER_URL https://getcomposer.org/download/1.5.1/composer.phar
+USER root
+
+ENV COMPOSER_URL https://getcomposer.org/composer.phar
 ENV COMPOSER_ALLOW_SUPERUSER 1
-
-RUN curl -L -o /usr/bin/composer "${COMPOSER_URL}" \
-    && chmod +x /usr/bin/composer
 
 COPY . /app/www
 
+
 RUN apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing/ \
-            git
+		curl \
+		git \
+	&& curl -L -o /usr/bin/composer "${COMPOSER_URL}" \
+    && chmod +x /usr/bin/composer \
+    && chown -R app:app /app \
+    && chmod -R +rw /app
+
+USER app
 
 RUN cd /app/www \
     && composer install \
