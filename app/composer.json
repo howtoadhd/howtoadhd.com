@@ -34,14 +34,18 @@
   "require-dev": {
     "wpackagist-plugin/rewrite-rules-inspector": "^1.2",
 	"howtoadhd/phpcs-ruleset": "dev-master",
-	"overtrue/phplint": "^0.2.4"
+	"overtrue/phplint": "^1.0.2"
   },
   "scripts": {
-	"config-set": [
-	  "\"vendor/bin/phpcs\" --config-set installed_paths ../../../vendor/howtoadhd/phpcs-ruleset,../../../vendor/wp-coding-standards/wpcs,../../../vendor/wimg/php-compatibility",
-	  "\"vendor/bin/phpcs\" --config-set default_standard HowToADHD"
+	"analyse:phpcs": "phpcs .",
+	"analyse:phplint": "phplint",
+	"analyse": [
+	  "@analyse:phplint",
+	  "@analyse:phpcs"
 	],
-	"post-install-cmd": "composer config-set",
-	"post-update-cmd": "composer config-set"
+	"fix:phpcbf": "phpcbf .",
+	"fix": [
+	  "@fix:phpcbf"
+	]
   }
 }

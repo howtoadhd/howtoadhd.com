@@ -2,7 +2,7 @@ sudo: required
 
 language: php
 php:
-  - '7.2'
+  - '7.0'
 
 services:
   - docker
@@ -28,7 +28,7 @@ jobs:
         - cd ./app
         - composer install
       script:
-        - ./vendor/bin/phpcs ./
+        - composer analyse:phpcs
 
 
     - stage: test
@@ -38,7 +38,7 @@ jobs:
         - cd ./app
         - composer install
       script:
-        ./vendor/bin/phplint
+        - composer analyse:phplint
 
 
     - stage: deploy
