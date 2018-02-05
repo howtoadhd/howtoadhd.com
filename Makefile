@@ -10,7 +10,7 @@ pull:
 	docker pull howtoadhd/dev-services:latest
 
 build:
-	docker build --no-cache -t howtoadhd/howtoadhd.com:app app
+	docker build --no-cache -t howtoadhd/howtoadhd.com:app www
 	docker build --no-cache -t howtoadhd/howtoadhd.com:php .docker/php
 	docker build --no-cache -t howtoadhd/howtoadhd.com:nginx .docker/nginx
 	docker build --no-cache -t howtoadhd/howtoadhd.com:queue .docker/queue
@@ -19,7 +19,7 @@ build-dev: build
 	docker build --no-cache -t howtoadhd/howtoadhd.com:php-dev .dev/php-dev
 
 run:
-	cd app; \
+	cd www; \
     ../bin/composer install \
 		--no-ansi \
 		--dev \

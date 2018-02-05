@@ -25,7 +25,7 @@ services:
     depends_on:
       - dev-services
     volumes:
-      - ../app:/app/www:ro
+      - ../www:/app/www:ro
     extra_hosts:
       - howtoadhd.pink:172.18.0.1
     env_file:
@@ -39,7 +39,7 @@ services:
     depends_on:
       - dev-services
     volumes:
-      - ../app:/app/www:ro
+      - ../www:/app/www:ro
     extra_hosts:
       - howtoadhd.pink:172.18.0.1
     env_file:
@@ -55,7 +55,7 @@ services:
     depends_on:
       - php
     volumes:
-      - ../app:/app/www:ro
+      - ../www:/app/www:ro
     environment:
       FASTCGI_PASS: php:9000
       ROOT_DOMAIN:  howtoadhd.pink

@@ -3,15 +3,15 @@
 .phplint-cache
 
 /.dev/data/
-/app/vendor/
-/app/wordpress/
+/www/vendor/
+/www/wordpress/
 
-/app/wp-content/upgrade/
-/app/wp-content/uploads/
+/www/wp-content/upgrade/
+/www/wp-content/uploads/
 
-/app/wp-content/platform
-/app/wp-content/db.php
+/www/wp-content/platform
+/www/wp-content/db.php
 
-/app/wp-content/plugins/rewrite-rules-inspector/
+/www/wp-content/plugins/rewrite-rules-inspector/
 
-/app/wp-content/themes/twentyseventeen/
+/www/wp-content/themes/twentyseventeen/
