@@ -21,10 +21,9 @@ RUN apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/te
 
 USER app
 
-RUN cd /app/www \
+RUN cd /app \
     && composer install \
         --no-ansi \
         --no-dev \
         --no-interaction \
-        --no-progress \
-        --no-scripts
+        --no-progress

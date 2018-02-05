@@ -1,10 +1,10 @@
 #!/usr/bin/env sh
 set -e
 
-cd /app/www/wordpress
+cd /app/wordpress
 
 php -r '
-    require "/app/www/vendor/autoload.php";
+    require "/app/vendor/autoload.php";
 
 	use HowToADHD\WPPlatform\Service\Database;
 
@@ -59,4 +59,4 @@ if ! $(wp core is-installed --allow-root); then
 fi
 echo "WordPress is installed, starting Cavalcade..."
 
-/app/cavalcade/vendor/bin/cavalcade /app/www/wordpress
+/app/cavalcade/vendor/bin/cavalcade /app/wordpress

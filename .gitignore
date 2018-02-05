@@ -6,15 +6,15 @@
 
 /cavalcade/vendor
 
-/www/vendor/
-/www/wordpress/
+/vendor/
+/wordpress/
 
-/www/wp-content/upgrade/
-/www/wp-content/uploads/
+/wp-content/upgrade/
+/wp-content/uploads/
 
-/www/wp-content/platform
-/www/wp-content/db.php
+/wp-content/platform
+/wp-content/db.php
 
-/www/wp-content/plugins/rewrite-rules-inspector/
+/wp-content/plugins/rewrite-rules-inspector/
 
-/www/wp-content/themes/twentyseventeen/
+/wp-content/themes/twentyseventeen/

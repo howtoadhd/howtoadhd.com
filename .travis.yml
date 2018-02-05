@@ -25,7 +25,6 @@ jobs:
       env:
         - TEST=phpcs
       before_script:
-        - cd ./www
         - composer install
       script:
         - composer analyse:phpcs
@@ -35,7 +34,6 @@ jobs:
       env:
         - TEST=phplint
       before_script:
-        - cd ./www
         - composer install
       script:
         - composer analyse:phplint

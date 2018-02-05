@@ -19,13 +19,11 @@ build-dev: build
 	docker build --no-cache -t howtoadhd/howtoadhd.com:php-dev .dev/php-dev
 
 run:
-	cd www; \
-    composer install \
+	composer install \
 		--no-ansi \
 		--dev \
 		--no-interaction \
-		--no-progress \
-		--no-scripts
+		--no-progress
 
 	cd .dev; \
 	docker-compose \

@@ -9,7 +9,7 @@
 - * loading all of WP up. Crazy, eh?
 - */
 +
-+require "/app/www/vendor/autoload.php";
++require "/app/vendor/autoload.php";
 +
 +use HowToADHD\WPPlatform\Service\Database;
 +

@@ -2,14 +2,7 @@ FROM howtoadhd/howtoadhd.com:app
 
 USER root
 
-RUN cd /app/cavalcade \
-    && composer install \
-    	--no-autoloader \
-        --no-ansi \
-        --no-dev \
-        --no-interaction \
-        --no-progress \
-    && chown -R app:app /app \
+RUN chown -R app:app /app \
     && chmod -R +rw /app
 
 FROM howtoadhd/base-images:latest-php-cli
