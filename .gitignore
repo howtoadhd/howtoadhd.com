@@ -3,6 +3,9 @@
 .phplint-cache
 
 /.dev/data/
+
+/cavalcade/vendor
+
 /www/vendor/
 /www/wordpress/
 

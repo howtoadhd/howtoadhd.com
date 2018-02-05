@@ -2,8 +2,6 @@ FROM howtoadhd/howtoadhd.com:app
 
 USER root
 
-COPY ./fs /
-
 RUN cd /app/cavalcade \
     && composer install \
     	--no-autoloader \
@@ -14,8 +12,6 @@ RUN cd /app/cavalcade \
         --no-scripts \
     && chown -R app:app /app \
     && chmod -R +rw /app
-
-COPY ./fs /
 
 FROM howtoadhd/base-images:latest-php-cli
 
@@ -31,7 +27,7 @@ RUN chmod +x /usr/bin/wp \
     && find /app -type f -exec chmod 440 {} \; \
     && chmod 550 \
     	/app/cavalcade/bin/cavalcade \
-    	/app/cavalcade/runner/bin/cavalcade
+    	/app/cavalcade/vendor/bin/cavalcade
 
 USER app
 

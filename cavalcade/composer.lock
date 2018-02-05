@@ -1,0 +1,109 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "2565ff232360969ac0708cffa1773d05",
+    "packages": [
+        {
+            "name": "cweagans/composer-patches",
+            "version": "1.6.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cweagans/composer-patches.git",
+                "reference": "462e65061606dc6149349535d4322241515d1b16"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cweagans/composer-patches/zipball/462e65061606dc6149349535d4322241515d1b16",
+                "reference": "462e65061606dc6149349535d4322241515d1b16",
+                "shasum": ""
+            },
+            "require": {
+                "composer-plugin-api": "^1.0",
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "composer/composer": "~1.0",
+                "phpunit/phpunit": "~4.6"
+            },
+            "type": "composer-plugin",
+            "extra": {
+                "class": "cweagans\\Composer\\Patches"
+            },
+            "autoload": {
+                "psr-4": {
+                    "cweagans\\Composer\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-2-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Cameron Eagans",
+                    "email": "me@cweagans.net"
+                }
+            ],
+            "description": "Provides a way to patch Composer packages.",
+            "time": "2017-12-07T16:16:31+00:00"
+        },
+        {
+            "name": "humanmade/cavalcade-runner",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/humanmade/Cavalcade-Runner.git",
+                "reference": "52fa840f3fa45d4302b0de82cf6197c235980c9e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/humanmade/Cavalcade-Runner/zipball/52fa840f3fa45d4302b0de82cf6197c235980c9e",
+                "reference": "52fa840f3fa45d4302b0de82cf6197c235980c9e",
+                "shasum": ""
+            },
+            "require": {
+                "ext-pcntl": "*",
+                "ext-pdo_mysql": "*",
+                "php": ">=5.6"
+            },
+            "require-dev": {
+                "humanmade/coding-standards": "dev-master"
+            },
+            "bin": [
+                "bin/cavalcade"
+            ],
+            "type": "library",
+            "extra": {
+                "patches_applied": {
+                    "Set DB constants from WP Platform": "patches/configure.patch"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Human Made",
+                    "homepage": "https://hmn.md/"
+                }
+            ],
+            "description": "Daemon for Cavalcade, a scalable WordPress jobs system.",
+            "homepage": "https://github.com/humanmade/Cavalcade-Runner",
+            "time": "2017-08-01T00:40:01+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "dev",
+    "stability-flags": {
+        "humanmade/cavalcade-runner": 20
+    },
+    "prefer-stable": true,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}

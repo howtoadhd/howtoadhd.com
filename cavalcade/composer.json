@@ -1,0 +1,17 @@
+{
+  "name": "howtoadhd/cavalcade-runner",
+  "type": "project",
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "require": {
+    "humanmade/cavalcade-runner": "dev-master",
+    "cweagans/composer-patches": "^1.6"
+  },
+  "extra": {
+	"patches": {
+	  "humanmade/cavalcade-runner": {
+		"Set DB constants from WP Platform": "patches/configure.patch"
+	  }
+	}
+  }
+}
