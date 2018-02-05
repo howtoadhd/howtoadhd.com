@@ -9,7 +9,6 @@ RUN cd /app/cavalcade \
         --no-dev \
         --no-interaction \
         --no-progress \
-        --no-scripts \
     && chown -R app:app /app \
     && chmod -R +rw /app
 
