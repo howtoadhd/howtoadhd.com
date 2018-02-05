@@ -1,20 +1,21 @@
+# Ignore common files globally.
 *.iml
 .idea
 .phplint-cache
+.DS_Store
 
-/.dev/data/
+# Ignore sirectories only used by local env.
+/.dev/data
 
+# Ignore files/directories managed by composer.
 /cavalcade/vendor
-
-/vendor/
-/wordpress/
-
-/wp-content/upgrade/
-/wp-content/uploads/
-
+/vendor
+/wordpress
 /wp-content/platform
 /wp-content/db.php
-
 /wp-content/plugins/rewrite-rules-inspector/
-
 /wp-content/themes/twentyseventeen/
+
+# Ignore directories that should never exist.
+/wp-content/upgrade
+/wp-content/uploads

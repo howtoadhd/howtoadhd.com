@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+set -ex
+
+# sane defaults.
+chown -R app:app /app
+find /app -type d -exec chmod 500 {} \;
+find /app -type f -exec chmod 400 {} \;
+chmod 550 /app
+
+# Bin
+chmod -R 500 /app/bin
+
+# App
+find /app/vendor -type d -exec chmod 550 {} \;
+find /app/vendor -type f -exec chmod 440 {} \;
+find /app/wordpress -type d -exec chmod 550 {} \;
+find /app/wordpress -type f -exec chmod 440 {} \;
+find /app/wp-content -type d -exec chmod 550 {} \;
+find /app/wp-content -type f -exec chmod 440 {} \;
+chmod 440 \
+	wp-config.php \
+	roles.php
+
+# Cavalcade
+if [ -d "/app/cavalcade" ]; then
+  chmod 500 \
+    /app/cavalcade/bin/cavalcade \
+    /app/cavalcade/vendor/bin/cavalcade
+fi
+
+# Nginx
+if [ -d "/etc/nginx" ]; then
+  chown -R root:root /etc/nginx
+    find /etc/nginx -type d -exec chmod 500 {} \;
+    find /etc/nginx -type f -exec chmod 400 {} \;
+fi

@@ -7,23 +7,25 @@ ENV WP_CLI_URL https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-
 ENV COMPOSER_URL https://getcomposer.org/composer.phar
 ENV COMPOSER_ALLOW_SUPERUSER 1
 
-COPY . /app
-
+# Install build dependencies.
 RUN apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing/ \
 		curl \
 		git \
 	&& curl -L -o /usr/bin/wp "${WP_CLI_URL}" \
     && chmod +x /usr/bin/wp \
 	&& curl -L -o /usr/bin/composer "${COMPOSER_URL}" \
-    && chmod +x /usr/bin/composer \
-    && chown -R app:app /app \
-    && chmod -R +rw /app
+    && chmod +x /usr/bin/composer
 
-USER app
+# Copy source files and set permissions
+COPY . /app
 
-RUN cd /app \
-    && composer install \
+# Install dependencies
+RUN composer install \
         --no-ansi \
         --no-dev \
         --no-interaction \
         --no-progress
+
+# Set permissions
+RUN chmod +x bin/fix-permissions \
+    && ./bin/fix-permissions

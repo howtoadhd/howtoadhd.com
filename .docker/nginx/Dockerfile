@@ -1,13 +1,13 @@
 FROM howtoadhd/howtoadhd.com:app
 # This exists to allow copying between images
 
+RUN rm -rf /app/cavalcade
+
 FROM howtoadhd/base-images:latest-nginx
 
 COPY ./fs /
 
 COPY --from=0 /app /app
 
-RUN rm -rf /app/www \
-	&& chown -R app:app /app \
-	&& find /app -type d -exec chmod 550 {} \; \
-    && find /app -type f -exec chmod 440 {} \;
+RUN chmod +x bin/fix-permissions \
+    && ./bin/fix-permissions
