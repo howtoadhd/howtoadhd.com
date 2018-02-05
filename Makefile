@@ -20,7 +20,7 @@ build-dev: build
 
 run:
 	cd www; \
-    ../bin/composer install \
+    composer install \
 		--no-ansi \
 		--dev \
 		--no-interaction \
