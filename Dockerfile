@@ -7,8 +7,7 @@ ENV WP_CLI_URL https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-
 ENV COMPOSER_URL https://getcomposer.org/composer.phar
 ENV COMPOSER_ALLOW_SUPERUSER 1
 
-COPY . /app/www
-
+COPY . /app
 
 RUN apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing/ \
 		curl \

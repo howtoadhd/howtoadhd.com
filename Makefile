@@ -10,7 +10,7 @@ pull:
 	docker pull howtoadhd/dev-services:latest
 
 build:
-	docker build --no-cache -t howtoadhd/howtoadhd.com:app www
+	docker build --no-cache -t howtoadhd/howtoadhd.com:app .
 	docker build --no-cache -t howtoadhd/howtoadhd.com:php .docker/php
 	docker build --no-cache -t howtoadhd/howtoadhd.com:nginx .docker/nginx
 	docker build --no-cache -t howtoadhd/howtoadhd.com:queue .docker/queue

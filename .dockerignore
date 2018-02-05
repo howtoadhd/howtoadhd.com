@@ -1,0 +1,13 @@
+/.docker
+/.dockerignore
+/.dev
+/.git
+/.gitignore
+/README.md
+/Makefile
+/.editorconfig
+/LICENSE
+/.travis.yml
+.idea
+*.iml
+.DS_Store
