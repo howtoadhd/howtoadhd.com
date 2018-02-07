@@ -1,1 +1,4 @@
 path: wordpress
+disabled_commands:
+  - config
+  - db
