@@ -5,10 +5,13 @@
 	<config name="installed_paths" value="vendor/howtoadhd/phpcs-ruleset,vendor/wp-coding-standards/wpcs,vendor/wimg/php-compatibility" />
 	<rule ref="HowToADHD"/>
 
+	<exclude-pattern>/cavalcade/vendor/*</exclude-pattern>
+
 	<exclude-pattern>/vendor/*</exclude-pattern>
 	<exclude-pattern>/wordpress/*</exclude-pattern>
 
 	<exclude-pattern>/wp-content/platform/*</exclude-pattern>
+	<exclude-pattern>/wp-content/db.php</exclude-pattern>
 
 	<exclude-pattern>/wp-content/plugins/rewrite-rules-inspector/*</exclude-pattern>
 

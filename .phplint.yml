@@ -3,6 +3,8 @@ jobs: 10
 extensions:
   - php
 exclude:
+  - cavalcade/vendor
+
   - vendor
   - wordpress
 
