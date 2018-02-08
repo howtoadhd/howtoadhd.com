@@ -1,12 +1,20 @@
 default: dev
 
-dev: pull build-dev run
+dev: pull-dev build run
 
 pull:
+	docker pull howtoadhd/base-images:latest-php-cli
 	docker pull howtoadhd/base-images:latest-php-fpm
-	docker pull howtoadhd/php-base:latest-cli
-	docker pull howtoadhd/nginx-base:latest
-	docker pull howtoadhd/cavalcade-runner:latest
+	docker pull howtoadhd/base-images:latest-nginx
+
+pull-dev:
+	docker pull howtoadhd/base-images:latest-php-cli-dev
+	docker tag howtoadhd/base-images:latest-php-cli-dev howtoadhd/base-images:latest-php-cli
+
+	docker pull howtoadhd/base-images:latest-php-fpm-dev
+	docker tag howtoadhd/base-images:latest-php-fpm-dev howtoadhd/base-images:latest-php-fpm
+
+	docker pull howtoadhd/base-images:latest-nginx
 	docker pull howtoadhd/dev-services:latest
 
 build:
@@ -14,9 +22,6 @@ build:
 	docker build --no-cache -t howtoadhd/howtoadhd.com:php .docker/php
 	docker build --no-cache -t howtoadhd/howtoadhd.com:nginx .docker/nginx
 	docker build --no-cache -t howtoadhd/howtoadhd.com:queue .docker/queue
-
-build-dev: build
-	docker build --no-cache -t howtoadhd/howtoadhd.com:php-dev .dev/php-dev
 
 run:
 	composer install \

@@ -34,7 +34,7 @@ services:
       WP_DEBUG: "false"
 
   php:
-    image: howtoadhd/howtoadhd.com:php-dev
+    image: howtoadhd/howtoadhd.com:php
     restart: always
     depends_on:
       - dev-services
