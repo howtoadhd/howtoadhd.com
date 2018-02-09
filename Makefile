@@ -77,6 +77,10 @@ travis-nginx-after_success:
 	docker tag builder:nginx ${TEMP_IMAGE_NGINX}
 	docker push ${TEMP_IMAGE_NGINX}
 
+_travis-nginx-pull:
+	docker pull ${TEMP_IMAGE_NGINX}
+	docker tag ${TEMP_IMAGE_NGINX} builder:nginx
+
 ############################################    PHP    ############################################
 
 export TEMP_IMAGE_PHP="${TEMP_IMAGE_BASE}__php"
@@ -90,6 +94,10 @@ travis-php-script:
 travis-php-after_success:
 	docker tag builder:php ${TEMP_IMAGE_PHP}
 	docker push ${TEMP_IMAGE_PHP}
+
+_travis-php-pull:
+	docker pull ${TEMP_IMAGE_PHP}
+	docker tag ${TEMP_IMAGE_PHP} builder:php
 
 ##########################################    PHP Dev    ##########################################
 
@@ -105,6 +113,10 @@ travis-php-dev-after_success:
 	docker tag builder:php-dev ${TEMP_IMAGE_PHP_DEV}
 	docker push ${TEMP_IMAGE_PHP_DEV}
 
+_travis-php-dev-pull:
+	docker pull ${TEMP_IMAGE_PHP_DEV}
+	docker tag ${TEMP_IMAGE_PHP_DEV} builder:php-dev
+
 ###########################################    Queue    ###########################################
 
 export TEMP_IMAGE_QUEUE="${TEMP_IMAGE_BASE}__queue"
@@ -119,6 +131,10 @@ travis-queue-after_success:
 	docker tag builder:queue ${TEMP_IMAGE_QUEUE}
 	docker push ${TEMP_IMAGE_QUEUE}
 
+_travis-queue-pull:
+	docker pull ${TEMP_IMAGE_QUEUE}
+	docker tag ${TEMP_IMAGE_QUEUE} builder:queue
+
 #########################################    Queue Dev    #########################################
 
 export TEMP_IMAGE_QUEUE_DEV="${TEMP_IMAGE_BASE}__queue-dev"
@@ -132,3 +148,21 @@ travis-queue-dev-script:
 travis-queue-dev-after_success:
 	docker tag builder:queue-dev ${TEMP_IMAGE_QUEUE_DEV}
 	docker push ${TEMP_IMAGE_QUEUE_DEV}
+
+_travis-queue-dev-pull:
+	docker pull ${TEMP_IMAGE_QUEUE_DEV}
+	docker tag ${TEMP_IMAGE_QUEUE_DEV} builder:queue-dev
+
+##########################################    Promote    ##########################################
+
+travis-promote-before_script: _travis-${SERVICE}-pull
+
+travis-promote-script:
+	if [ $$TRAVIS_PULL_REQUEST == 'false' ]; then \
+		docker tag builder:${SERVICE} howtoadhd/howtoadhd.com:$${TRAVIS_BRANCH//\//__}-${SERVICE}; \
+		docker push howtoadhd/howtoadhd.com:$${TRAVIS_BRANCH//\//__}-${SERVICE}; \
+	fi
+	if [ $$TRAVIS_PULL_REQUEST == 'false' ] && [ $$TRAVIS_BRANCH == 'master' ]; then \
+		docker tag builder:${SERVICE} howtoadhd/howtoadhd.com:latest-${SERVICE}; \
+		docker push howtoadhd/howtoadhd.com:latest-${SERVICE}; \
+	fi

@@ -11,6 +11,7 @@ stages:
   - analyse
   - build-app
   - build-services
+  - promote
 
 install:
   - curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
@@ -96,6 +97,46 @@ jobs:
         - make travis-queue-dev-script
       after_success:
         - make travis-queue-dev-after_success
+
+    - stage: promote
+      env:
+        - SERVICE=nginx
+      before_script:
+        - make travis-promote-before_script
+      script:
+        - make travis-promote-script
+
+    - stage: promote
+      env:
+        - SERVICE=php
+      before_script:
+        - make travis-promote-before_script
+      script:
+        - make travis-promote-script
+
+    - stage: promote
+      env:
+        - SERVICE=php-dev
+      before_script:
+        - make travis-promote-before_script
+      script:
+        - make travis-promote-script
+
+    - stage: promote
+      env:
+        - SERVICE=queue
+      before_script:
+        - make travis-promote-before_script
+      script:
+        - make travis-promote-script
+
+    - stage: promote
+      env:
+        - SERVICE=queue-dev
+      before_script:
+        - make travis-promote-before_script
+      script:
+        - make travis-promote-script
 
 
 
