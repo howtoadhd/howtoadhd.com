@@ -1,4 +1,4 @@
-FROM howtoadhd/howtoadhd.com:app
+FROM builder:app
 # This exists to allow copying between images
 
 RUN rm -rf /app/cavalcade

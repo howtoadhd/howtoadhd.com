@@ -20,7 +20,7 @@ services:
           - mock.s3.aws.howtoadhd.pink
 
   queue:
-    image: howtoadhd/howtoadhd.com:queue
+    image: builder:queue-dev
     restart: always
     depends_on:
       - dev-services
@@ -34,7 +34,7 @@ services:
       WP_DEBUG: "false"
 
   php:
-    image: howtoadhd/howtoadhd.com:php
+    image: builder:php-dev
     restart: always
     depends_on:
       - dev-services
@@ -50,7 +50,7 @@ services:
       PHP_IDE_CONFIG: "serverName=howtoadhd"
 
   nginx:
-    image: howtoadhd/howtoadhd.com:nginx
+    image: builder:nginx
     restart: always
     depends_on:
       - php

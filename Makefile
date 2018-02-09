@@ -1,37 +1,24 @@
-default: dev
+SHELL := /bin/bash
+DOCKER := make -C .docker
+.DEFAULT_GOAL := help
 
-dev: pull-dev build run
+help: ## Print this message.
+	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
-pull:
-	docker pull howtoadhd/base-images:latest-app-builder
-	docker pull howtoadhd/base-images:latest-php-cli
-	docker pull howtoadhd/base-images:latest-php-fpm
-	docker pull howtoadhd/base-images:latest-nginx
+##################################    Development Environment    ##################################
 
-pull-dev:
-	docker pull howtoadhd/base-images:latest-php-cli-dev
-	docker tag howtoadhd/base-images:latest-php-cli-dev howtoadhd/base-images:latest-php-cli
+dev: build start # Build & start the development environment
 
-	docker pull howtoadhd/base-images:latest-php-fpm-dev
-	docker tag howtoadhd/base-images:latest-php-fpm-dev howtoadhd/base-images:latest-php-fpm
+build: ## Build the development endironment
+	$(DOCKER) common dev
 
-	docker pull howtoadhd/base-images:latest-app-builder
-	docker pull howtoadhd/base-images:latest-nginx
-	docker pull howtoadhd/dev-services:latest
-
-build:
-	docker build --no-cache -t howtoadhd/howtoadhd.com:app .
-	docker build --no-cache -t howtoadhd/howtoadhd.com:php .docker/php
-	docker build --no-cache -t howtoadhd/howtoadhd.com:nginx .docker/nginx
-	docker build --no-cache -t howtoadhd/howtoadhd.com:queue .docker/queue
-
-run:
 	composer install \
-		--no-ansi \
-		--dev \
-		--no-interaction \
-		--no-progress
+    		--no-ansi \
+    		--dev \
+    		--no-interaction \
+    		--no-progress
 
+start: ## Start the development environment
 	cd .dev; \
 	docker-compose \
 		--project-name howtoadhd \
@@ -39,14 +26,9 @@ run:
 		--remove-orphans \
 		--force-recreate
 
-stop:
+stop: ## Stop the development environment
 	cd .dev; \
 	docker-compose \
 		--project-name howtoadhd \
 		down \
 		--remove-orphans
-
-travis-deploy:
-	docker push howtoadhd/howtoadhd.com:php
-	docker push howtoadhd/howtoadhd.com:nginx
-	docker push howtoadhd/howtoadhd.com:queue
