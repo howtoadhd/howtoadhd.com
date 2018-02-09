@@ -90,3 +90,17 @@ travis-php-script:
 travis-php-after_success:
 	docker tag builder:php ${TEMP_IMAGE_PHP}
 	docker push ${TEMP_IMAGE_PHP}
+
+##########################################    PHP Dev    ##########################################
+
+export TEMP_IMAGE_PHP_DEV="${TEMP_IMAGE_BASE}__php-dev"
+
+travis-php-dev-before_script: _travis-app-pull
+	$(DOCKER) php-dev-pull-base
+
+travis-php-dev-script:
+	$(DOCKER) php-dev-build
+
+travis-php-dev-after_success:
+	docker tag builder:php-dev ${TEMP_IMAGE_PHP_DEV}
+	docker push ${TEMP_IMAGE_PHP_DEV}

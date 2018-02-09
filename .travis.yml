@@ -65,6 +65,16 @@ jobs:
       after_success:
         - make travis-php-after_success
 
+    - stage: build-services
+      env:
+        - SERVICE=php-dev
+      before_script:
+        - make travis-php-dev-before_script
+      script:
+        - make travis-php-dev-script
+      after_success:
+        - make travis-php-dev-after_success
+
 
 
 notifications:
