@@ -48,6 +48,8 @@ jobs:
         - make travis-app-after_success
 
     - stage: build-services
+      env:
+        - SERVICE=nginx
       before_script:
         - make travis-nginx-before_script
       script:
