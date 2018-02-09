@@ -32,3 +32,29 @@ stop: ## Stop the development environment
 		--project-name howtoadhd \
 		down \
 		--remove-orphans
+
+
+
+
+
+#########################################    Travis CI    #########################################
+
+TRAVIS_COMMIT?='local'
+TEMP_IMAGE_REPO?='howtoadhd/travis-dump'
+TEMP_IMAGE_TAG_BASE?='howtoadhd_howtoadhd.com'
+
+TEMP_IMAGE_BASE="${TEMP_IMAGE_REPO}:${TEMP_IMAGE_TAG_BASE}__${TRAVIS_COMMIT}"
+
+############################################    App    ############################################
+
+export TEMP_IMAGE_PHP_BASE="${TEMP_IMAGE_BASE}__app"
+
+travis-app-before_script:
+	$(DOCKER) app-pull-base
+
+travis-app-script:
+	$(DOCKER) app-build
+
+travis-app-after_success:
+	docker tag builder:app ${TEMP_IMAGE_PHP_BASE}
+	docker push ${TEMP_IMAGE_PHP_BASE}

@@ -8,10 +8,10 @@ services:
   - docker
 
 stages:
-  - test
-  - deploy
+  - analyse
+  - build-app
 
-before_install:
+install:
   - curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
   - sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
   - sudo apt-get update
@@ -21,7 +21,7 @@ before_install:
 jobs:
   include:
 
-    - stage: test
+    - stage: analyse
       env:
         - TEST=phpcs
       before_script:
@@ -30,7 +30,7 @@ jobs:
         - composer analyse:phpcs
 
 
-    - stage: test
+    - stage: analyse
       env:
         - TEST=phplint
       before_script:
@@ -38,17 +38,15 @@ jobs:
       script:
         - composer analyse:phplint
 
-
-    - stage: deploy
+    - stage: build-app
       before_script:
-        - make pull
-
+        - make travis-app-before_script
       script:
-        - make build
+        - make travis-app-script
+      after_success:
+        - make travis-app-after_success
 
-        - if [ "$TRAVIS_BRANCH" == "master" ]; then
-            make travis-deploy;
-          fi
+
 
 notifications:
   webhooks:
