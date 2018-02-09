@@ -46,6 +46,14 @@ jobs:
       after_success:
         - make travis-app-after_success
 
+    - stage: build-nginx
+      before_script:
+        - make travis-nginx-before_script
+      script:
+        - make travis-nginx-script
+      after_success:
+        - make travis-nginx-after_success
+
 
 
 notifications:

@@ -47,7 +47,7 @@ TEMP_IMAGE_BASE="${TEMP_IMAGE_REPO}:${TEMP_IMAGE_TAG_BASE}__${TRAVIS_COMMIT}"
 
 ############################################    App    ############################################
 
-export TEMP_IMAGE_PHP_BASE="${TEMP_IMAGE_BASE}__app"
+export TEMP_IMAGE_APP="${TEMP_IMAGE_BASE}__app"
 
 travis-app-before_script:
 	$(DOCKER) app-pull-base
@@ -56,5 +56,23 @@ travis-app-script:
 	$(DOCKER) app-build
 
 travis-app-after_success:
-	docker tag builder:app ${TEMP_IMAGE_PHP_BASE}
-	docker push ${TEMP_IMAGE_PHP_BASE}
+	docker tag builder:app ${TEMP_IMAGE_APP}
+	docker push ${TEMP_IMAGE_APP}
+
+_travis-app-pull:
+	docker pull ${TEMP_IMAGE_APP}
+	docker tag ${TEMP_IMAGE_APP} builder:app
+
+###########################################    Nginx    ###########################################
+
+export TEMP_IMAGE_NGINX="${TEMP_IMAGE_BASE}__nginx"
+
+travis-nginx-before_script: _travis-app-pull
+	$(DOCKER) nginx-pull-base
+
+travis-nginx-script:
+	$(DOCKER) nginx-build
+
+travis-nginx-after_success:
+	docker tag builder:nginx ${TEMP_IMAGE_NGINX}
+	docker push ${TEMP_IMAGE_NGINX}
