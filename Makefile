@@ -104,3 +104,17 @@ travis-php-dev-script:
 travis-php-dev-after_success:
 	docker tag builder:php-dev ${TEMP_IMAGE_PHP_DEV}
 	docker push ${TEMP_IMAGE_PHP_DEV}
+
+###########################################    Queue    ###########################################
+
+export TEMP_IMAGE_QUEUE="${TEMP_IMAGE_BASE}__queue"
+
+travis-queue-before_script: _travis-app-pull
+	$(DOCKER) queue-pull-base
+
+travis-queue-script:
+	$(DOCKER) queue-build
+
+travis-queue-after_success:
+	docker tag builder:queue ${TEMP_IMAGE_QUEUE}
+	docker push ${TEMP_IMAGE_QUEUE}
