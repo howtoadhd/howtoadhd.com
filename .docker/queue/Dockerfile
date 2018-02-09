@@ -3,8 +3,6 @@ FROM howtoadhd/howtoadhd.com:app
 
 FROM howtoadhd/base-images:latest-php-cli
 
-USER root
-
 COPY --from=0 /app /app
 COPY --from=0 /usr/bin/wp /usr/bin/wp
 

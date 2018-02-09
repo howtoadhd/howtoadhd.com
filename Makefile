@@ -3,6 +3,7 @@ default: dev
 dev: pull-dev build run
 
 pull:
+	docker pull howtoadhd/base-images:latest-app-builder
 	docker pull howtoadhd/base-images:latest-php-cli
 	docker pull howtoadhd/base-images:latest-php-fpm
 	docker pull howtoadhd/base-images:latest-nginx
@@ -14,6 +15,7 @@ pull-dev:
 	docker pull howtoadhd/base-images:latest-php-fpm-dev
 	docker tag howtoadhd/base-images:latest-php-fpm-dev howtoadhd/base-images:latest-php-fpm
 
+	docker pull howtoadhd/base-images:latest-app-builder
 	docker pull howtoadhd/base-images:latest-nginx
 	docker pull howtoadhd/dev-services:latest
 
