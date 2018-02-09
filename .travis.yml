@@ -85,6 +85,16 @@ jobs:
       after_success:
         - make travis-queue-after_success
 
+    - stage: build-services
+      env:
+        - SERVICE=queue-dev
+      before_script:
+        - make travis-queue-dev-before_script
+      script:
+        - make travis-queue-dev-script
+      after_success:
+        - make travis-queue-dev-after_success
+
 
 
 notifications:

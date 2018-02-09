@@ -118,3 +118,17 @@ travis-queue-script:
 travis-queue-after_success:
 	docker tag builder:queue ${TEMP_IMAGE_QUEUE}
 	docker push ${TEMP_IMAGE_QUEUE}
+
+#########################################    Queue Dev    #########################################
+
+export TEMP_IMAGE_QUEUE_DEV="${TEMP_IMAGE_BASE}__queue-dev"
+
+travis-queue-dev-before_script: _travis-app-pull
+	$(DOCKER) queue-dev-pull-base
+
+travis-queue-dev-script:
+	$(DOCKER) queue-dev-build
+
+travis-queue-dev-after_success:
+	docker tag builder:queue-dev ${TEMP_IMAGE_QUEUE_DEV}
+	docker push ${TEMP_IMAGE_QUEUE_DEV}
