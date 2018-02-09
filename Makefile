@@ -76,3 +76,17 @@ travis-nginx-script:
 travis-nginx-after_success:
 	docker tag builder:nginx ${TEMP_IMAGE_NGINX}
 	docker push ${TEMP_IMAGE_NGINX}
+
+############################################    PHP    ############################################
+
+export TEMP_IMAGE_PHP="${TEMP_IMAGE_BASE}__php"
+
+travis-php-before_script: _travis-app-pull
+	$(DOCKER) php-pull-base
+
+travis-php-script:
+	$(DOCKER) php-build
+
+travis-php-after_success:
+	docker tag builder:php ${TEMP_IMAGE_PHP}
+	docker push ${TEMP_IMAGE_PHP}
