@@ -4,8 +4,20 @@
 .phplint-cache
 .DS_Store
 
-# Ignore sirectories only used by local env.
-/.dev/data
+# Ignore files in the root not required by the images.
+/Dockerfile
+/.dockerignore
+/.gitignore
+/README.md
+/Makefile
+/.editorconfig
+/LICENSE
+/.travis.yml
+
+# Ignore directories in the root not required by the images.
+/.docker
+/.dev
+/.git
 
 # Ignore files/directories managed by composer.
 /cavalcade/vendor
@@ -16,6 +28,6 @@
 /wp-content/plugins/rewrite-rules-inspector/
 /wp-content/themes/twentyseventeen/
 
-# Ignore directories that should never exist.
+# Ignore directories that should never exist in image.
 /wp-content/upgrade
 /wp-content/uploads

@@ -8,10 +8,12 @@ services:
   - docker
 
 stages:
-  - test
-  - deploy
+  - analyse
+  - build-app
+  - build-services
+  - promote
 
-before_install:
+install:
   - curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
   - sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
   - sudo apt-get update
@@ -21,36 +23,122 @@ before_install:
 jobs:
   include:
 
-    - stage: test
+    - stage: analyse
       env:
         - TEST=phpcs
       before_script:
-        - cd ./app
         - composer install
       script:
         - composer analyse:phpcs
 
 
-    - stage: test
+    - stage: analyse
       env:
         - TEST=phplint
       before_script:
-        - cd ./app
         - composer install
       script:
         - composer analyse:phplint
 
-
-    - stage: deploy
+    - stage: build-app
       before_script:
-        - make pull
-
+        - make travis-app-before_script
       script:
-        - make build
+        - make travis-app-script
+      after_success:
+        - make travis-app-after_success
 
-        - if [ "$TRAVIS_BRANCH" == "master" ]; then
-            make travis-deploy;
-          fi
+    - stage: build-services
+      env:
+        - SERVICE=nginx
+      before_script:
+        - make travis-nginx-before_script
+      script:
+        - make travis-nginx-script
+      after_success:
+        - make travis-nginx-after_success
+
+    - stage: build-services
+      env:
+        - SERVICE=php
+      before_script:
+        - make travis-php-before_script
+      script:
+        - make travis-php-script
+      after_success:
+        - make travis-php-after_success
+
+    - stage: build-services
+      env:
+        - SERVICE=php-dev
+      before_script:
+        - make travis-php-dev-before_script
+      script:
+        - make travis-php-dev-script
+      after_success:
+        - make travis-php-dev-after_success
+
+    - stage: build-services
+      env:
+        - SERVICE=queue
+      before_script:
+        - make travis-queue-before_script
+      script:
+        - make travis-queue-script
+      after_success:
+        - make travis-queue-after_success
+
+    - stage: build-services
+      env:
+        - SERVICE=queue-dev
+      before_script:
+        - make travis-queue-dev-before_script
+      script:
+        - make travis-queue-dev-script
+      after_success:
+        - make travis-queue-dev-after_success
+
+    - stage: promote
+      env:
+        - SERVICE=nginx
+      before_script:
+        - make travis-promote-before_script
+      script:
+        - make travis-promote-script
+
+    - stage: promote
+      env:
+        - SERVICE=php
+      before_script:
+        - make travis-promote-before_script
+      script:
+        - make travis-promote-script
+
+    - stage: promote
+      env:
+        - SERVICE=php-dev
+      before_script:
+        - make travis-promote-before_script
+      script:
+        - make travis-promote-script
+
+    - stage: promote
+      env:
+        - SERVICE=queue
+      before_script:
+        - make travis-promote-before_script
+      script:
+        - make travis-promote-script
+
+    - stage: promote
+      env:
+        - SERVICE=queue-dev
+      before_script:
+        - make travis-promote-before_script
+      script:
+        - make travis-promote-script
+
+
 
 notifications:
   webhooks:

@@ -46,6 +46,8 @@
 	"fix:phpcbf": "phpcbf .",
 	"fix": [
 	  "@fix:phpcbf"
-	]
+	],
+	"post-install-cmd": "cd cavalcade && composer install",
+	"post-update-cmd": "cd cavalcade && composer update"
   }
 }

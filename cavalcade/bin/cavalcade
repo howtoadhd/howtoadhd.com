@@ -1,10 +1,10 @@
 #!/usr/bin/env sh
 set -e
 
-cd /app/www/wordpress
+cd /app/wordpress
 
 php -r '
-    require "/app/www/vendor/autoload.php";
+    require "/app/vendor/autoload.php";
 
 	use HowToADHD\WPPlatform\Service\Database;
 
@@ -15,11 +15,9 @@ php -r '
 		exit( 1 );
 	}
 
-	print_r( $db_master );
-
 	error_reporting(0);
 	mysqli_report( MYSQLI_REPORT_STRICT );
-	$max_attempts = 300;
+	$max_attempts = 30;
 	$attempt      = 0;
 
 	do {
@@ -35,7 +33,7 @@ php -r '
 		} catch ( Exception $e ) {
 			echo "Could not connect to database, retrying..." . PHP_EOL;
 			$attempt ++;
-			sleep( 5 );
+			sleep( 10 );
 			continue;
 		}
 
@@ -47,17 +45,16 @@ php -r '
 	echo "Could not connect after $max_attempts attempts!" . PHP_EOL;
 	exit( 1 );'
 
-ATTEMPT=0
-until `wp core is-installed --allow-root`; do
-    echo "WordPress is not installed, retrying..."
+if ! $(wp core is-installed --allow-root); then
+    wp core install \
+        --url="${DOMAIN}" \
+        --title="How To ADHD" \
+        --admin_user="${INITIAL_USER}" \
+        --admin_password="${INITIAL_PASSWORD}" \
+        --admin_email="${ADMIN_EMAIL}" \
+        --skip-email \
+        --allow-root
+fi
+echo "WordPress is installed, starting Cavalcade..."
 
-    if [ ${ATTEMPT} == 300 ]; then
-        exit 1
-    fi
-
-    sleep 5
-    ATTEMPT=${ATTEMPT}+1
-done
-echo "WordPress is installed, starting PHP-FPM..."
-
-php-fpm7
+/app/cavalcade/vendor/bin/cavalcade /app/wordpress
